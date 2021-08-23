@@ -32,7 +32,7 @@ const style = (colorTheme) => {
     },
 
     textSubtitle:{
-      fontFamily:'Poppins-SemiBold',
+      fontFamily:'Poppins-Regular',
       color:AppStylesHousin.colorSet[colorTheme].whiteText,
       fontSize:AppStylesHousin.fontSet.normal,
       textAlign:'justify',
@@ -66,7 +66,7 @@ const style = (colorTheme) => {
 
     containerInputs:{
       width:"100%",
-      height:'60%',
+      height:'15rem',
       justifyContent:'center',
       alignItems:'center'
     },
@@ -112,7 +112,8 @@ const style = (colorTheme) => {
       backgroundColor:AppStylesHousin.colorSet[colorTheme].buttonColor,
       borderRadius:10,
       alignItems:'center',
-      justifyContent:'center'
+      justifyContent:'center',
+      marginBottom:'1rem'
     },
 
     inputContainerStyle:{
@@ -121,6 +122,15 @@ const style = (colorTheme) => {
       width: '100%',
       height: '100%',
 
+    },
+
+    '@media (min-width: 320) and (max-width:380)':{
+      buttonStyle:{
+       marginTop:"-1rem",
+      },
+      containerInputs:{
+        height:'11rem',
+      }
     }
   });
 

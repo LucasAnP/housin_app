@@ -37,6 +37,7 @@ const _fontSet = {
 
 const lightColors={
   mainThemeBackgroundColor:_colors.primary,
+  minLinearThemeBackground:_colors.lightPrimary,
   secondThemeBackgroundColor:_colors.secondary,
 
   buttonColor:_colors.lightPrimary,
@@ -48,6 +49,7 @@ const lightColors={
 }
 const darkColors={
   mainThemeBackgroundColor:_colors.primary,
+  minLinearThemeBackground:_colors.lightPrimary,
   secondThemeBackgroundColor:_colors.secondary,
 
   buttonColor:_colors.lightPrimary,
