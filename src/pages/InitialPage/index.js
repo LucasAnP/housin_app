@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {View, StatusBar} from 'react-native';
+import { View, StatusBar } from 'react-native';
 import { useColorScheme } from 'react-native-appearance';
 import AppStyleHousin from '../../../AppStyleHousin';
 import style from './style';

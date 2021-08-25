@@ -22,7 +22,9 @@ const _colors = {
 
   lightPrimary:'#FF8669',
 
-  textSub:'#807D7D'
+  textSub:'#807D7D',
+
+  grayBack:'#D3D3D3'
 };
 const _fontSet = {
   xxlarge: _fontSizeSet(36),
@@ -40,6 +42,8 @@ const lightColors={
   minLinearThemeBackground:_colors.lightPrimary,
   secondThemeBackgroundColor:_colors.secondary,
 
+  grayBackground:_colors.grayBack,
+
   buttonColor:_colors.lightPrimary,
   inputColor:_colors.inputColor,
 
@@ -51,6 +55,8 @@ const darkColors={
   mainThemeBackgroundColor:_colors.primary,
   minLinearThemeBackground:_colors.lightPrimary,
   secondThemeBackgroundColor:_colors.secondary,
+
+  grayBackground:_colors.grayBack,
 
   buttonColor:_colors.lightPrimary,
   inputColor:_colors.inputColor,

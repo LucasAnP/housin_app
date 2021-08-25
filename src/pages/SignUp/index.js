@@ -26,7 +26,7 @@ const SignUp = ({navigation}) =>{
           <StatusBar backgroundColor={AppStyleHousin.colorSet[colorScheme].mainThemeBackgroundColor} />
           <View style={styles.registerContainer}>
 
-            <TouchableOpacity onPress={()=>navigation.navigate('SignIn')}>
+            <TouchableOpacity onPress={()=>navigation.navigate('TabNavigator')}>
               <Text style={styles.registerText}>Login</Text>
             </TouchableOpacity>
           </View>

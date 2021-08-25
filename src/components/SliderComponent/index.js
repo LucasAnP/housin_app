@@ -17,19 +17,16 @@ const SliderComponent = ({
       key: 'one',
       title: 'Seja bem vindo',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere fringilla elit, non fermentum nisi semper non. Fusce sem ex, fermentum vitae ultricies vel',
-      backgroundColor: '#59b2ab',
     },
     {
       key: 'two',
       title: 'Ache a residência ideal',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere fringilla elit, non fermentum nisi semper non. Fusce sem ex, fermentum vitae ultricies vel',
-      backgroundColor: '#febe29',
     },
     {
       key: 'three',
       title: 'Com a pessoa ideal',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere fringilla elit, non fermentum nisi semper non. Fusce sem ex, fermentum vitae ultricies vel',
-      backgroundColor: '#22bcb5'
     }
   ];
 
