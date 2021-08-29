@@ -5,6 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useColorScheme } from 'react-native-appearance';
 import AppStyleHousin from '../../AppStyleHousin';
 import ListPage from '../pages/ListPage'
+import UserProfile from './Profile/UserProfile';
 
 function HomeScreen() {
   return (
@@ -14,9 +15,7 @@ function HomeScreen() {
 
 function SettingsScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
+    <UserProfile/>
   );
 }
 
@@ -26,6 +25,7 @@ export default function App() {
   const colorScheme = useColorScheme();
   return (
       <Tab.Navigator
+      safeAreaInsets={true}
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;

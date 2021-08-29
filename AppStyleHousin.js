@@ -23,8 +23,13 @@ const _colors = {
   lightPrimary:'#FF8669',
 
   textSub:'#807D7D',
+  textGray:'#ACB3AF',
 
-  grayBack:'#D3D3D3'
+  textDarkGray:'#69626D',
+
+  grayBack:'#D3D3D3',
+
+  grayIce:'#E6E6F2'
 };
 const _fontSet = {
   xxlarge: _fontSizeSet(36),
@@ -42,6 +47,8 @@ const lightColors={
   minLinearThemeBackground:_colors.lightPrimary,
   secondThemeBackgroundColor:_colors.secondary,
 
+  cardBackgroundColor:_colors.grayIce,
+
   grayBackground:_colors.grayBack,
 
   buttonColor:_colors.lightPrimary,
@@ -49,13 +56,20 @@ const lightColors={
 
   whiteText: _colors.secondary,
   themeText: _colors.primary,
-  subText: _colors.textSub
+  textDarkGray:_colors.textDarkGray,
+
+  subText: _colors.textSub,
+  subTextGray:_colors.textGray,
+
+
 }
 const darkColors={
   mainThemeBackgroundColor:_colors.primary,
   minLinearThemeBackground:_colors.lightPrimary,
   secondThemeBackgroundColor:_colors.secondary,
 
+  cardBackgroundColor:_colors.grayIce,
+
   grayBackground:_colors.grayBack,
 
   buttonColor:_colors.lightPrimary,
@@ -63,7 +77,10 @@ const darkColors={
 
   whiteText: _colors.secondary,
   themeText: _colors.primary,
-  subText: _colors.textSub
+  textDarkGray:_colors.textDarkGray,
+
+  subText: _colors.textSub,
+  subTextGray:_colors.textGray
 }
 
 const _colorSet = {
