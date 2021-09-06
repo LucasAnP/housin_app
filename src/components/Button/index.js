@@ -14,7 +14,7 @@ const ButtonContinue = ({
 
     return (
       <>
-        <TouchableOpacity style={styles.buttonContainer} onPress={onPress} disabled={disabled}>
+        <TouchableOpacity style={disabled?styles.buttonContainerDisabled:styles.buttonContainer} onPress={onPress} disabled={disabled}>
           <Text style={styles.textButton}>{text}</Text>
         </TouchableOpacity>
       </>

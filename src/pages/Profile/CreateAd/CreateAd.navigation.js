@@ -4,6 +4,7 @@ import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/
 
 import FirstPage from './FirstPage';
 import SecondPage from './SecondPage';
+import ThirdPage from './ThirdPage';
 
 const CreateAdNavigation = () => {
 
@@ -25,6 +26,7 @@ const CreateAdNavigation = () => {
     <Stack.Navigator screenOptions='screen' screenOptions={{cardStyleInterpolator:CardStyleInterpolators.forHorizontalIOS}}>
       <Stack.Screen options={{headerShown:false}} name='First Page' component={FirstPage} />
       <Stack.Screen options={{headerShown:false}} name='Second Page' component={SecondPage}/>
+      <Stack.Screen options={{headerShown:false}} name='Third Page' component={ThirdPage}/>
     </Stack.Navigator>
   )
 }

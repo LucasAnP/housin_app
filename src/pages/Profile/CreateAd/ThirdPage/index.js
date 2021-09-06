@@ -13,7 +13,7 @@ import ButtonContinue from '../../../../components/Button';
 
 import style from './style';
 
-const SecondPage = ({navigation}) =>{
+const ThirdPage = ({navigation}) =>{
     const colorScheme = useColorScheme();
     const styles = style(colorScheme);
 
@@ -91,7 +91,7 @@ const SecondPage = ({navigation}) =>{
                 </TouchableOpacity>
 
               </View>
-              <ButtonContinue text={'Próximo'} onPress={()=>navigation.navigate('Third Page')} disabled={!buttonAble}/>
+              <ButtonContinue text={'Próximo'} onPress={()=>navigation.navigate('Second Page')} disabled={!buttonAble}/>
           </View>
           {/* /WhiteView 67% */}
           <TouchableOpacity style={styles.goBackAbsoluteContainer} onPress={()=>navigation.goBack()}>
@@ -109,4 +109,4 @@ const SecondPage = ({navigation}) =>{
       </SafeAreaView>
     );
 }
-export default SecondPage;
+export default ThirdPage;

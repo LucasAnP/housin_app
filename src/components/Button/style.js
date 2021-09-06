@@ -13,6 +13,15 @@ const styles = (colorTheme) => {
       justifyContent:'center',
       padding:0
     },
+    buttonContainerDisabled:{
+      width:'90%',
+      height:'3.5rem',
+      backgroundColor:AppStylesHousin.colorSet[colorTheme].grayBackground,
+      borderRadius:8,
+      alignItems:'center',
+      justifyContent:'center',
+      padding:0
+    },
     textButton:{
       color:AppStylesHousin.colorSet[colorTheme].secondThemeBackgroundColor,
       fontSize:AppStylesHousin.fontSet.normal,
