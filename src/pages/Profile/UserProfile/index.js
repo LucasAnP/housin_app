@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ImageBackground, Text, View } from 'react-native';
+import { ImageBackground, Text, TouchableOpacity, View } from 'react-native';
 
 import { useColorScheme } from 'react-native-appearance';
 import LinearGradient from 'react-native-linear-gradient';
@@ -8,12 +8,11 @@ import AppStyleHousin from '../../../../AppStyleHousin';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import style from './style';
 
-const UserProfile = () => {
+const UserProfile = ({navigation}) => {
   const colorScheme = useColorScheme();
   const styles = style(colorScheme);
 
   let imageLocal = require('../../../assets/images/ednaldo_bandeira.png');
-
 
   return (
     <>
@@ -27,26 +26,45 @@ const UserProfile = () => {
           style={{
             height: '40%',
             width: AppStyleHousin.WINDOW_WIDTH * 1,
-            alignItems:'center',
-            justifyContent:'center'
+            alignItems: 'center',
+            justifyContent: 'center',
           }}>
-            <View style={{height:'13%', width:'90%', alignItems:'flex-end', justifyContent:'center'}}>
-              <Text style={styles.exitText}>Sair</Text>
-            </View>
-            <View style={styles.imageBackground}>
-              <View style={{width: '36%', height: '90%', borderColor:'white', borderWidth:2, borderRadius:80}}>
-                <ImageBackground
-                  resizeMode='cover'
-                  source={imageLocal}
-                  style={styles.imageStyleFullRadius}
-                />
-              </View>
-            </View>
-            <View style={{height:'17%', width:'90%', alignItems:'center', justifyContent:'flex-start'}}>
-              <Text style={styles.h1Text}>Lucas A.</Text>
-              <Text style={styles.subText}>23 Anos</Text>
+          <View
+            style={{
+              height: '13%',
+              width: '90%',
+              alignItems: 'flex-end',
+              justifyContent: 'center',
+            }}>
+            <Text style={styles.exitText}>Sair</Text>
+          </View>
+          <View style={styles.imageBackground}>
+            <View
+              style={{
+                width: '36%',
+                height: '90%',
+                borderColor: 'white',
+                borderWidth: 2,
+                borderRadius: 80,
+              }}>
+              <ImageBackground
+                resizeMode='cover'
+                source={imageLocal}
+                style={styles.imageStyleFullRadius}
+              />
             </View>
           </View>
+          <View
+            style={{
+              height: '17%',
+              width: '90%',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+            }}>
+            <Text style={styles.h1Text}>Lucas A.</Text>
+            <Text style={styles.subText}>23 Anos</Text>
+          </View>
+        </View>
 
         {/* WhiteView 67% */}
         <View
@@ -142,7 +160,7 @@ const UserProfile = () => {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <View
+            <TouchableOpacity
               style={{
                 width: '88%',
                 height: '70%',
@@ -152,7 +170,7 @@ const UserProfile = () => {
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'center',
-              }}>
+              }} onPress={()=> navigation.navigate('CreateAd')} activeOpacity={0.8}>
               {/* IconContainer */}
               <View
                 style={{
@@ -173,7 +191,7 @@ const UserProfile = () => {
                     justifyContent: 'center',
                   }}>
                   <MaterialCommunityIcons
-                    name={'folder-home'}
+                    name={'home-plus'}
                     color={
                       AppStyleHousin.colorSet[colorScheme]
                         .minLinearThemeBackground
@@ -191,10 +209,10 @@ const UserProfile = () => {
                   width: '80%',
                   justifyContent: 'center',
                 }}>
-                <Text style={styles.buttonText}>Meus Anúncios</Text>
+                <Text style={styles.buttonText}>Criar Anúncios</Text>
               </View>
               {/* /EditProfile Button Container */}
-            </View>
+            </TouchableOpacity>
           </View>
           {/* /Button 3 */}
 
@@ -206,7 +224,7 @@ const UserProfile = () => {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <View
+            <TouchableOpacity
               style={{
                 width: '88%',
                 height: '70%',
@@ -216,7 +234,7 @@ const UserProfile = () => {
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'center',
-              }}>
+              }} activeOpacity={0.8} onPress={()=>navigation.navigate('UserCredentials')}>
               {/* IconContainer */}
               <View
                 style={{
@@ -258,7 +276,7 @@ const UserProfile = () => {
                 <Text style={styles.buttonText}>Credenciais</Text>
               </View>
               {/* /EditProfile Button Container */}
-            </View>
+            </TouchableOpacity>
           </View>
           {/* /Button 1 */}
 
