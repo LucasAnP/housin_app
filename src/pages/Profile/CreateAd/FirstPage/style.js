@@ -34,7 +34,7 @@ const styles = (colorTheme) => {
     },
 
     subTextGray:{
-      fontFamily:'Poppins-SemiBold',
+      fontFamily:'Poppins-Regular',
       color:AppStylesHousin.colorSet[colorTheme].subText,
       fontSize:AppStylesHousin.fontSet.small,
       textAlign:'justify',
