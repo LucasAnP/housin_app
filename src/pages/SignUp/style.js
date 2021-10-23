@@ -68,18 +68,20 @@ const style = (colorTheme) => {
     containerInputs:{
       justifyContent:'flex-start',
       alignItems:'center',
-      height: '85%',
+      height: '95%',
       width: '100%'
     },
     emailContainer:{
       width:"90%",
       justifyContent:'center',
       alignItems:'flex-start',
+      marginBottom:'0.5rem'
     },
     passwordContainer:{
       width:"90%",
       justifyContent:'center',
       alignItems:'flex-start',
+      marginBottom:'0.5rem'
   },
     emailText:{
       color:AppStylesHousin.colorSet[colorTheme].subText,
@@ -99,7 +101,7 @@ const style = (colorTheme) => {
 
     buttonContainer:{
       width:"90%",
-      height: '30%',
+      height: '15%',
       alignItems:'center',
       justifyContent:'center'
     },
@@ -115,7 +117,6 @@ const style = (colorTheme) => {
 
     inputContainerStyle:{
       borderBottomWidth: 0,
-
       width: '100%',
       height: '100%',
 
@@ -126,11 +127,8 @@ const style = (colorTheme) => {
         height:'3rem',
       },
       inputStyle:{
-        height:'2.6rem',
+        height:'3rem',
       },
-      buttonContainer:{
-        height: '5rem'
-      }
     }
   });
 

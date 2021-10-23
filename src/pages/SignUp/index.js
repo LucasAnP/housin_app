@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 import { StatusBar, View,
   Text,
-  AsyncStorage,
   TouchableOpacity, KeyboardAvoidingView} from 'react-native';
   import { useColorScheme } from 'react-native-appearance';
 import { Input } from 'react-native-elements';
@@ -15,12 +14,31 @@ const SignUp = ({navigation}) =>{
     const colorScheme = useColorScheme();
     const styles = style(colorScheme);
 
-    const [ name, setName] = useState('');
+    const [ username, setUsername] = useState('');
     const [ email, setEmail] = useState('');
     const [ password, setPassword] = useState('');
     const [ confirmPassword, setConfirmPassword] = useState('');
+    const [ loginEffect, setLoginEffect] = useState(false);
 
+    const signUp = async () => {
+        try{
+          const response = await api.post('/users',{
+            username,
+            email,
+            password
+          })
+          console.log('responseSignUp', response);
+          setLoginEffect(response);
+        }catch(err){
+          console.warn(err);
+        }
+    };
 
+    useEffect(()=> {
+      if(loginEffect){
+        navigation.navigate('SignIn');
+      }
+    },[loginEffect])
     return (
       <KeyboardAvoidingView style={styles.containerSignIn} behavior={"height"}>
           <StatusBar backgroundColor={AppStyleHousin.colorSet[colorScheme].mainThemeBackgroundColor} />
@@ -35,14 +53,11 @@ const SignUp = ({navigation}) =>{
             <Text style={styles.textSubtitle}>faça parte da nova forma de encontrar moradias e parceiros para dividir casa</Text>
           </View>
           <View style={styles.containerLogin}>
-            <View style={styles.loginTextContainer}>
-              <Text style={styles.loginText}>Login</Text>
-            </View>
             <View style={styles.containerInputs}>
               <View style={styles.emailContainer}>
                 <Text style={styles.emailText}>Nome</Text>
                 <View style={styles.inputStyle}>
-                  <Input onChangeText={setEmail} inputContainerStyle={styles.inputContainerStyle}/>
+                  <Input onChangeText={setUsername} inputContainerStyle={styles.inputContainerStyle}/>
                 </View>
               </View>
               <View style={styles.emailContainer}>
@@ -60,12 +75,12 @@ const SignUp = ({navigation}) =>{
               <View style={styles.passwordContainer}>
                 <Text style={styles.emailPassword}>Confirmar Senha</Text>
                 <View style={styles.inputStyle}>
-                  <Input onChangeText={setPassword} inputContainerStyle={styles.inputContainerStyle} secureTextEntry={true}/>
+                  <Input onChangeText={setConfirmPassword} inputContainerStyle={styles.inputContainerStyle} secureTextEntry={true} errorMessage={(confirmPassword!=password && confirmPassword!='')&&'Senhas diferentes, por favor digitar a correta'} errorStyle={{marginTop:'-2%'}}/>
                 </View>
               </View>
               <View style={styles.buttonContainer}>
                 <View style={styles.buttonStyle}>
-                  <TouchableOpacity onPress={()=>{login()}}>
+                  <TouchableOpacity onPress={()=>{signUp()}}>
                     <Text style={styles.textSubtitle}>Entrar</Text>
                   </TouchableOpacity>
                 </View>

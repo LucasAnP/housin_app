@@ -12,8 +12,9 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import ButtonContinue from '../../../../components/Button';
 
 import style from './style';
+import { Input } from 'react-native-elements';
 
-const ThirdPage = ({navigation}) =>{
+const FourthPage = ({navigation}) =>{
     const colorScheme = useColorScheme();
     const styles = style(colorScheme);
 
@@ -52,7 +53,7 @@ const ThirdPage = ({navigation}) =>{
           <StatusBar translucent={true} backgroundColor={'rgba(0, 0, 0, .2)'} />
           <View
             style={{
-              height: '40%',
+              height: '20%',
               width: AppStyleHousin.WINDOW_WIDTH * 1,
               alignItems: 'center',
               justifyContent: 'center'
@@ -67,7 +68,7 @@ const ThirdPage = ({navigation}) =>{
           {/* WhiteView 67% */}
           <View
             style={{
-              height: '60%',
+              height: '80%',
               width: '100%',
               backgroundColor: AppStyleHousin.colorSet[colorScheme].secondThemeBackgroundColor,
               borderTopRightRadius: 15,
@@ -76,22 +77,26 @@ const ThirdPage = ({navigation}) =>{
               alignItems:'center',
               paddingVertical:'15%',
             }}>
-              <Text style={[styles.h1TextGray,{alignSelf:'flex-start', paddingHorizontal:'5%', paddingRight:'25%', textAlign:'left'}]}>Você está procurando...</Text>
+              <Text style={[styles.h1TextGray,{alignSelf:'flex-start', paddingHorizontal:'5%', paddingRight:'25%', textAlign:'left'}]}>Onde está localizada a moradia?</Text>
               <View style={styles.contentContainer}>
-                <TouchableOpacity style={isSelected1?styles.buttonContainerSelected:styles.buttonContainer} onPress={()=>{setIsSelected1(!isSelected1); clickOnChoice('ButtonOne')}} >
-                  <Text style={isSelected1?styles.subText:styles.subTextGray} >Alguém para dividir casa</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={isSelected2?styles.buttonContainerSelected:styles.buttonContainer} onPress={()=>{setIsSelected2(!isSelected2); clickOnChoice('ButtonTwo')}} >
-                  <Text style={isSelected2?styles.subText:styles.subTextGray} >Alguém para dividir quarto</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={isSelected3?styles.buttonContainerSelected:styles.buttonContainer} onPress={()=>{setIsSelected3(!isSelected3); clickOnChoice('ButtonThree')}} >
-                  <Text style={isSelected3?styles.subText:styles.subTextGray}>Alguém para alugar minha casa</Text>
-                </TouchableOpacity>
-
+                <View style={{width:'90%', height:'10%', alignItems:'flex-start'}}>
+                  <Text style={styles.subTextGray}>Estado</Text>
+                  <Input inputContainerStyle={{width:'100%', height:'50%'}} ></Input>
+                </View>
+                <View style={{width:'90%', height:'10%', alignItems:'flex-start'}}>
+                  <Text style={styles.subTextGray}>Cidade</Text>
+                  <Input inputContainerStyle={{width:'100%', height:'50%'}}  ></Input>
+                </View>
+                <View style={{width:'90%', height:'10%', alignItems:'flex-start'}}>
+                  <Text style={styles.subTextGray}>Rua</Text>
+                  <Input inputContainerStyle={{width:'100%', height:'50%'}}  ></Input>
+                </View>
+                <View style={{width:'90%', height:'10%', alignItems:'flex-start'}}>
+                  <Text style={styles.subTextGray}>Bairro</Text>
+                  <Input inputContainerStyle={{width:'100%', height:'50%'}}  ></Input>
+                </View>
               </View>
-              <ButtonContinue text={'Próximo'} onPress={()=>navigation.navigate('Fourth Page')} disabled={!buttonAble}/>
+              <ButtonContinue text={'Próximo'} onPress={()=>navigation.navigate('Fifth Page')}/>
           </View>
           {/* /WhiteView 67% */}
           <TouchableOpacity style={styles.goBackAbsoluteContainer} onPress={()=>navigation.goBack()}>
@@ -109,4 +114,4 @@ const ThirdPage = ({navigation}) =>{
       </SafeAreaView>
     );
 }
-export default ThirdPage;
+export default FourthPage;

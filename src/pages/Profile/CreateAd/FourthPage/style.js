@@ -82,6 +82,8 @@ const styles = (colorTheme) => {
       borderRadius:10,
       justifyContent:'center',
       paddingHorizontal:'5%',
+      borderWidth:1,
+      borderColor:AppStylesHousin.colorSet[colorTheme].mainThemeBackgroundColor,
       backgroundColor:AppStylesHousin.colorSet[colorTheme].minLinearThemeBackground,
     }
   });

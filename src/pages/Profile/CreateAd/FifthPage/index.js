@@ -13,7 +13,7 @@ import ButtonContinue from '../../../../components/Button';
 
 import style from './style';
 
-const ThirdPage = ({navigation}) =>{
+const FifthPage = ({navigation}) =>{
     const colorScheme = useColorScheme();
     const styles = style(colorScheme);
 
@@ -76,22 +76,22 @@ const ThirdPage = ({navigation}) =>{
               alignItems:'center',
               paddingVertical:'15%',
             }}>
-              <Text style={[styles.h1TextGray,{alignSelf:'flex-start', paddingHorizontal:'5%', paddingRight:'25%', textAlign:'left'}]}>Você está procurando...</Text>
+              <Text style={[styles.h1TextGray,{alignSelf:'flex-start', paddingHorizontal:'5%', paddingRight:'25%', textAlign:'left'}]}>Quantas pessoas você está procurando?</Text>
               <View style={styles.contentContainer}>
                 <TouchableOpacity style={isSelected1?styles.buttonContainerSelected:styles.buttonContainer} onPress={()=>{setIsSelected1(!isSelected1); clickOnChoice('ButtonOne')}} >
-                  <Text style={isSelected1?styles.subText:styles.subTextGray} >Alguém para dividir casa</Text>
+                  <Text style={isSelected1?styles.subText:styles.subTextGray} >1</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={isSelected2?styles.buttonContainerSelected:styles.buttonContainer} onPress={()=>{setIsSelected2(!isSelected2); clickOnChoice('ButtonTwo')}} >
-                  <Text style={isSelected2?styles.subText:styles.subTextGray} >Alguém para dividir quarto</Text>
+                  <Text style={isSelected2?styles.subText:styles.subTextGray} >2</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={isSelected3?styles.buttonContainerSelected:styles.buttonContainer} onPress={()=>{setIsSelected3(!isSelected3); clickOnChoice('ButtonThree')}} >
-                  <Text style={isSelected3?styles.subText:styles.subTextGray}>Alguém para alugar minha casa</Text>
+                  <Text style={isSelected3?styles.subText:styles.subTextGray}>3</Text>
                 </TouchableOpacity>
 
               </View>
-              <ButtonContinue text={'Próximo'} onPress={()=>navigation.navigate('Fourth Page')} disabled={!buttonAble}/>
+              <ButtonContinue text={'Finalizar'} onPress={()=>navigation.navigate('UserProfile')} disabled={!buttonAble}/>
           </View>
           {/* /WhiteView 67% */}
           <TouchableOpacity style={styles.goBackAbsoluteContainer} onPress={()=>navigation.goBack()}>
@@ -109,4 +109,4 @@ const ThirdPage = ({navigation}) =>{
       </SafeAreaView>
     );
 }
-export default ThirdPage;
+export default FifthPage;

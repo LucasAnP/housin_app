@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { StatusBar, View, Text, FlatList, ImageBackground, TouchableOpacity, Modal, ScrollView } from 'react-native';
 import { useColorScheme } from 'react-native-appearance';
@@ -10,6 +10,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import SliderStaticComponent from '../../components/SliderStatic';
+import api from './../../services/api';
 
 const ListPage = ({ navigation }) => {
   const colorScheme = useColorScheme();
@@ -35,6 +36,19 @@ const ListPage = ({ navigation }) => {
   ];
 
   const [modalOn, setModalOn] = useState(false);
+
+  const getProperties = async () => {
+    try{
+      const properties = await api.get('/properties');
+      console.log('properties', properties.response);
+    }catch(err){
+      console.warn(err);
+    }
+  };
+
+  useEffect(()=> {
+    getProperties();
+  },[])
 
   return (
     <SafeAreaView style={styles.container}>

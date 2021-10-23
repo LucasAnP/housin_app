@@ -1,4 +1,5 @@
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /* Endereços para cada emulador/simulador:
 ** Genymotion:              http://10.0.3.2:3333/
@@ -6,7 +7,21 @@ import axios from 'axios';
 ** Simulador IOS:           http://localhost:3333/
 */
 const api = axios.create({
-  baseURL: 'http://localhost:3333',
+  baseURL: 'http://10.0.2.2:3333',
+});
+
+api.interceptors.request.use(async (config) => {
+  try {
+    const token = await AsyncStorage.getItem('@HousinApp:token');
+
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+
+    return config;
+  } catch (err) {
+    alert(err);
+  }
 });
 
 export default api;

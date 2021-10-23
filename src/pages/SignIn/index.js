@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 
 import { StatusBar, View,
   Text,
-  AsyncStorage,
   TouchableOpacity, KeyboardAvoidingView} from 'react-native';
   import { useColorScheme } from 'react-native-appearance';
-import { Input } from 'react-native-elements';
+
 import AppStyleHousin from '../../../AppStyleHousin';
 import style from './style';
-
 import api from '../../services/api';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Input } from 'react-native-elements';
 
 const SignIn = ({navigation}) =>{
     const colorScheme = useColorScheme();
@@ -17,28 +17,21 @@ const SignIn = ({navigation}) =>{
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [loginEffect, setLoginEffect] = useState(false);
-
 
     const login = async () => {
-      try{
-        const response = await api.post('/auth',{
-          email,
-          password
-        })
-        setLoginEffect(response);
-        console.log(response)
-        await AsyncStorage.setItem('@HousinApp:token', response.data.token);
-      }catch(err){
-        console.warn(err)
-      }
+        try{
+          const response = await api.post('/sessions',{
+            email,
+            password
+          })
+          await AsyncStorage.setItem('@HousinApp:token', response.data.token);
+          navigation.replace('TabNavigator',{
+            screen:'Home'
+          });
+        }catch(err){
+          console.warn(err);
+        }
     };
-
-    useEffect(()=> {
-      if(loginEffect){
-        navigation.navigate('SignUp');
-      }
-    },[loginEffect])
 
     return (
       <KeyboardAvoidingView style={styles.containerSignIn} behavior={"height"}>
