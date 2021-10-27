@@ -12,6 +12,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import ButtonContinue from '../../../../components/Button';
 
 import style from './style';
+import api from '../../../../services/api';
 
 const FifthPage = ({navigation}) =>{
     const colorScheme = useColorScheme();
@@ -38,7 +39,18 @@ const FifthPage = ({navigation}) =>{
       }
 
     }
-
+    const createProperty = async () => {
+      try{
+        const response = await api.post('/properties',{
+          title: "Casa do Adonis",
+          address: "Perto da casa do React Native",
+          description:"Casa bonita, um local bem arejado e com uma vizinhança incrível",
+          compatibility:0
+        })
+      }catch(err){
+        console.warn(err);
+      }
+  };
     useEffect(()=> {
       if(isSelected1 || isSelected2 || isSelected3){
         setButtonAble(true);
@@ -91,10 +103,10 @@ const FifthPage = ({navigation}) =>{
                 </TouchableOpacity>
 
               </View>
-              <ButtonContinue text={'Finalizar'} onPress={()=>navigation.navigate('UserProfile')} disabled={!buttonAble}/>
+              <ButtonContinue text={'Finalizar'} onPress={()=>{createProperty();navigation.navigate('UserProfile')}} disabled={!buttonAble}/>
           </View>
           {/* /WhiteView 67% */}
-          <TouchableOpacity style={styles.goBackAbsoluteContainer} onPress={()=>navigation.goBack()}>
+          <TouchableOpacity style={styles.goBackAbsoluteContainer} onPress={()=>{navigation.goBack()}}>
             <View style={styles.iconContainer}>
             <MaterialIcons
                           name={'arrow-back-ios'}

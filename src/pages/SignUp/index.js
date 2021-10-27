@@ -27,7 +27,6 @@ const SignUp = ({navigation}) =>{
             email,
             password
           })
-          console.log('responseSignUp', response);
           setLoginEffect(response);
         }catch(err){
           console.warn(err);
@@ -38,7 +37,7 @@ const SignUp = ({navigation}) =>{
       if(loginEffect){
         navigation.navigate('SignIn');
       }
-    },[loginEffect])
+    },[loginEffect]);
     return (
       <KeyboardAvoidingView style={styles.containerSignIn} behavior={"height"}>
           <StatusBar backgroundColor={AppStyleHousin.colorSet[colorScheme].mainThemeBackgroundColor} />

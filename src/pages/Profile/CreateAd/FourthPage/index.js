@@ -80,23 +80,19 @@ const FourthPage = ({navigation}) =>{
               <Text style={[styles.h1TextGray,{alignSelf:'flex-start', paddingHorizontal:'5%', paddingRight:'25%', textAlign:'left'}]}>Onde está localizada a moradia?</Text>
               <View style={styles.contentContainer}>
                 <View style={{width:'90%', height:'10%', alignItems:'flex-start'}}>
-                  <Text style={styles.subTextGray}>Estado</Text>
+                  <Text style={styles.subTextGray}>Título</Text>
                   <Input inputContainerStyle={{width:'100%', height:'50%'}} ></Input>
                 </View>
                 <View style={{width:'90%', height:'10%', alignItems:'flex-start'}}>
-                  <Text style={styles.subTextGray}>Cidade</Text>
+                  <Text style={styles.subTextGray}>Endereço</Text>
                   <Input inputContainerStyle={{width:'100%', height:'50%'}}  ></Input>
                 </View>
                 <View style={{width:'90%', height:'10%', alignItems:'flex-start'}}>
-                  <Text style={styles.subTextGray}>Rua</Text>
-                  <Input inputContainerStyle={{width:'100%', height:'50%'}}  ></Input>
-                </View>
-                <View style={{width:'90%', height:'10%', alignItems:'flex-start'}}>
-                  <Text style={styles.subTextGray}>Bairro</Text>
+                  <Text style={styles.subTextGray}>Descrição</Text>
                   <Input inputContainerStyle={{width:'100%', height:'50%'}}  ></Input>
                 </View>
               </View>
-              <ButtonContinue text={'Próximo'} onPress={()=>navigation.navigate('Fifth Page')}/>
+              <ButtonContinue text={'Próximo'} onPress={()=>navigation.navigate('Fifth Page',{title:'Casa de lá',address:'Perto do outro lado', description:'Casa bonita, um local bem arejado e com uma vizinhança incrível'})}/>
           </View>
           {/* /WhiteView 67% */}
           <TouchableOpacity style={styles.goBackAbsoluteContainer} onPress={()=>navigation.goBack()}>

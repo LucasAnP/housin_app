@@ -18,29 +18,14 @@ const ListPage = ({ navigation }) => {
 
   let imageLocal = require('../../assets/images/ednaldo_bandeira.png');
 
-  const cardList = [
-    {
-      key: 1,
-      name: 'Casa de São Viscente',
-      address: 'Casa de esquina ao lado do bar',
-      match: '83%',
-      info: 'Eu sou Lucas, estudo na UFPB e curso Sistemas de Informação. Gosto de jogar jogos online. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere fringilla elit, non fermentum Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    },
-    {
-      key: 2,
-      name: 'Casa de São Viscente',
-      address: 'Casa de esquina ao lado do bar',
-      match: '56%',
-      info: 'Eu sou Lucas, estudo na UFPB e curso Sistemas de Informação. Gosto de jogar jogos online. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere fringilla elit, non fermentum Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    },
-  ];
+  const [cardList, setCardList] = useState([]);
 
   const [modalOn, setModalOn] = useState(false);
 
   const getProperties = async () => {
     try{
       const properties = await api.get('/properties');
-      console.log('properties', properties.response);
+      setCardList(properties.data);
     }catch(err){
       console.warn(err);
     }
@@ -166,22 +151,18 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere fri
               </View>
               <View style={styles.infoOfHouse}>
                 <View style={styles.nameAndAge}>
-                  <Text style={styles.subTitle}>{item.name}</Text>
+                  <Text style={styles.subTitle}>{item.title}</Text>
                   <Text style={styles.subTitleDescription}>{item.address}</Text>
                 </View>
                 <View style={styles.porcentContainer}>
                   <View style={styles.porcentInfo}>
-                    <Text>{item.match}</Text>
+                    <Text>{item.compatibility}%</Text>
                   </View>
                 </View>
               </View>
               <View style={styles.descriptionContainer}>
                 <Text style={styles.descriptionText}>
-                  Eu sou Lucas, estudo na UFPB e curso Sistemas de Informação.
-                  Gosto de jogar jogos online. Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit. Suspendisse posuere fringilla
-                  elit, non fermentum Lorem ipsum dolor sit amet, consectetur
-                  adipiscing elit.
+                  {item.description}
                 </Text>
               </View>
               </TouchableOpacity>
