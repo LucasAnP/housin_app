@@ -11,6 +11,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import SliderStaticComponent from '../../components/SliderStatic';
 import api from './../../services/api';
+import Spinner from 'react-native-loading-spinner-overlay';
+import { useIsFocused } from '@react-navigation/native';
 
 const ListPage = ({ navigation }) => {
   const colorScheme = useColorScheme();
@@ -22,10 +24,15 @@ const ListPage = ({ navigation }) => {
 
   const [modalOn, setModalOn] = useState(false);
 
+  const [loading, setLoading] = useState(false);
+  const isFocused = useIsFocused();
+
   const getProperties = async () => {
+    setLoading(true);
     try{
       const properties = await api.get('/properties');
       setCardList(properties.data);
+      setLoading(false);
     }catch(err){
       console.warn(err);
     }
@@ -33,10 +40,16 @@ const ListPage = ({ navigation }) => {
 
   useEffect(()=> {
     getProperties();
-  },[])
+  },[isFocused])
 
   return (
     <SafeAreaView style={styles.container}>
+        <Spinner
+          visible={loading}
+          textContent={'Loading...'}
+          color={AppStyleHousin.colorSet[colorScheme].cardBackgroundColor}
+          textStyle={styles.textSubtitleGray}
+        />
       <StatusBar
         backgroundColor={
           AppStyleHousin.colorSet[colorScheme].mainThemeBackgroundColor

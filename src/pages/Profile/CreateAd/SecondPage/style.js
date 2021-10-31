@@ -66,23 +66,35 @@ const styles = (colorTheme) => {
       paddingLeft:'1.5%'
     },
 
-    buttonContainer:{
-      width: '90%',
-      height: '4rem',
-      borderRadius:10,
-      justifyContent:'center',
-      paddingHorizontal:'5%',
+    inputStyle:{
+      width:'90%',
+      height:'10%',
+      backgroundColor:AppStylesHousin.colorSet[colorTheme].secondThemeBackgroundColor,
+      borderRadius:5,
       borderWidth:1,
-      borderColor:AppStylesHousin.colorSet[colorTheme].grayBackground,
-    },
-
-    buttonContainerSelected:{
-      width: '90%',
-      height: '4rem',
-      borderRadius:10,
+      borderColor:AppStylesHousin.colorSet[colorTheme].inputColor,
       justifyContent:'center',
-      paddingHorizontal:'5%',
-      backgroundColor:AppStylesHousin.colorSet[colorTheme].minLinearThemeBackground,
+      padding: 10,
+    },
+    inputStyleDescription:{
+      width:'90%',
+      height:'50%',
+      backgroundColor:AppStylesHousin.colorSet[colorTheme].secondThemeBackgroundColor,
+      borderRadius:5,
+      borderWidth:1,
+      borderColor:AppStylesHousin.colorSet[colorTheme].inputColor,
+      justifyContent:'center',
+      padding: 10,
+    },
+    inputStyleAddress:{
+      width:'90%',
+      height:'20%',
+      backgroundColor:AppStylesHousin.colorSet[colorTheme].secondThemeBackgroundColor,
+      borderRadius:5,
+      borderWidth:1,
+      borderColor:AppStylesHousin.colorSet[colorTheme].inputColor,
+      justifyContent:'center',
+      padding: 10,
     }
   });
 

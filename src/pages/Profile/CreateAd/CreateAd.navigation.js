@@ -31,6 +31,7 @@ const CreateAdNavigation = () => {
       <Stack.Screen options={{headerShown:false}} name='Third Page' component={ThirdPage}/>
       <Stack.Screen options={{headerShown:false}} name='Fourth Page' component={FourthPage}/>
       <Stack.Screen options={{headerShown:false}} name='Fifth Page' component={FifthPage}/>
+      {/* <Stack.Screen options={{headerShown:false}} name='Photo Page' component={PhotoPage}/> */}
     </Stack.Navigator>
   )
 }

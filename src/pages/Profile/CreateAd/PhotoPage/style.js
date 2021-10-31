@@ -41,13 +41,12 @@ const styles = (colorTheme) => {
 
     contentContainer:{
       width:'100%',
-      height:'100%',
+      height:'85%',
       justifyContent:'space-around',
       alignItems:'center',
-      paddingVertical:'5%'
     },
 
-    imageStyleFullRadius:{width:'105%', height:'110%', overflow: 'hidden'},
+    imageStyleFullRadius:{width:'100%', height:'100%', overflow: 'hidden'},
 
     goBackAbsoluteContainer:{
       width: '100%', height: '10%',position:'absolute',

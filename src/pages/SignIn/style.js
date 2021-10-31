@@ -22,7 +22,8 @@ const style = (colorTheme) => {
     textContainer:{
       width:'90%',
       height:'40%',
-      justifyContent:'center'
+      justifyContent:'space-around',
+      paddingBottom:"5%"
     },
 
     h1Text:{
@@ -34,6 +35,14 @@ const style = (colorTheme) => {
     textSubtitle:{
       fontFamily:'Poppins-Regular',
       color:AppStylesHousin.colorSet[colorTheme].whiteText,
+      fontSize:AppStylesHousin.fontSet.normal,
+      textAlign:'justify',
+      paddingBottom:'5%'
+    },
+
+    textSubtitleGray:{
+      fontFamily:'Poppins-Regular',
+      color:AppStylesHousin.colorSet[colorTheme].subText,
       fontSize:AppStylesHousin.fontSet.normal,
       textAlign:'justify',
     },
@@ -93,17 +102,19 @@ const style = (colorTheme) => {
     inputStyle:{
       width:'100%',
       height:'60%',
-      backgroundColor:AppStylesHousin.colorSet[colorTheme].inputColor,
+      backgroundColor:AppStylesHousin.colorSet[colorTheme].grayBackground,
       borderRadius:10,
 
       justifyContent:'center',
     },
 
     buttonContainer:{
-      width:"90%",
+      width:"100%",
       height:'30%',
       alignItems:'center',
-      justifyContent:'center'
+      justifyContent:'flex-end',
+      position:'absolute',
+      bottom:'3%',
     },
 
     buttonStyle:{
@@ -112,8 +123,18 @@ const style = (colorTheme) => {
       backgroundColor:AppStylesHousin.colorSet[colorTheme].buttonColor,
       borderRadius:10,
       alignItems:'center',
-      justifyContent:'center',
-      marginBottom:'1rem'
+      justifyContent:'flex-end',
+      paddingTop:'4%'
+    },
+
+    buttonStyleDisabled:{
+      width:'70%',
+      height:'50%',
+      backgroundColor:AppStylesHousin.colorSet[colorTheme].inputColor,
+      borderRadius:10,
+      alignItems:'center',
+      justifyContent:'flex-end',
+      paddingTop:'4%'
     },
 
     inputContainerStyle:{

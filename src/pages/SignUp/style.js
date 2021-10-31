@@ -67,6 +67,7 @@ const style = (colorTheme) => {
 
     containerInputs:{
       justifyContent:'flex-start',
+      paddingTop:'5%',
       alignItems:'center',
       height: '95%',
       width: '100%'
@@ -94,7 +95,7 @@ const style = (colorTheme) => {
     inputStyle:{
       width:'100%',
       height:'3.5rem',
-      backgroundColor:AppStylesHousin.colorSet[colorTheme].inputColor,
+      backgroundColor:AppStylesHousin.colorSet[colorTheme].grayBackground,
       borderRadius:10,
       justifyContent:'center',
     },
@@ -103,13 +104,24 @@ const style = (colorTheme) => {
       width:"90%",
       height: '15%',
       alignItems:'center',
-      justifyContent:'center'
+      justifyContent:'center',
+      position:'absolute',
+      bottom:'2%'
     },
 
     buttonStyle:{
       width:'80%',
       height:'3.5rem',
       backgroundColor:AppStylesHousin.colorSet[colorTheme].buttonColor,
+      borderRadius:10,
+      alignItems:'center',
+      justifyContent:'center',
+    },
+
+    buttonStyleDisabled:{
+      width:'80%',
+      height:'3.5rem',
+      backgroundColor:AppStylesHousin.colorSet[colorTheme].inputColor,
       borderRadius:10,
       alignItems:'center',
       justifyContent:'center',

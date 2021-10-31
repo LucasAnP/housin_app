@@ -41,6 +41,12 @@ const style = (colorTheme) => {
       textAlign:'justify',
     },
 
+    textSubtitleGray:{
+      fontFamily:'Poppins-Regular',
+      color:AppStylesHousin.colorSet[colorTheme].subText,
+      fontSize:AppStylesHousin.fontSet.normal,
+      textAlign:'justify',
+    },
 
     //Container
     container:{
