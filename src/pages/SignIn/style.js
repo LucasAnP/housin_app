@@ -134,7 +134,7 @@ const style = (colorTheme) => {
       borderRadius:10,
       alignItems:'center',
       justifyContent:'flex-end',
-      paddingTop:'4%'
+      paddingTop:'3%'
     },
 
     inputContainerStyle:{
@@ -146,11 +146,8 @@ const style = (colorTheme) => {
     },
 
     '@media (min-width: 320) and (max-width:380)':{
-      buttonStyle:{
-       marginTop:"-1rem",
-      },
       containerInputs:{
-        height:'11rem',
+        height:'13rem',
       }
     }
   });

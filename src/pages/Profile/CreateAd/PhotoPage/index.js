@@ -44,7 +44,6 @@ const PhotoPage = ({ navigation }) => {
   };
 
   const saveImage = async (response) => {
-    console.log('imagesData', imagesData);
     try {
       await api.post(
         `/properties/2/images`,
@@ -77,7 +76,7 @@ const PhotoPage = ({ navigation }) => {
       cropping: true,
       includeBase64: true,
     }).then((image) => {
-      console.log(image);
+      console.warn(image);
     });
   };
   return (

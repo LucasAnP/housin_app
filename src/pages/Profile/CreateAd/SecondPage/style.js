@@ -74,7 +74,7 @@ const styles = (colorTheme) => {
       borderWidth:1,
       borderColor:AppStylesHousin.colorSet[colorTheme].inputColor,
       justifyContent:'center',
-      padding: 10,
+      padding: 5,
     },
     inputStyleDescription:{
       width:'90%',

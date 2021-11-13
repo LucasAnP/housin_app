@@ -25,6 +25,9 @@ const ListPage = ({ navigation }) => {
   const [modalOn, setModalOn] = useState(false);
 
   const [loading, setLoading] = useState(false);
+
+  const [userClicked, setUserClicked] = useState();
+
   const isFocused = useIsFocused();
 
   const getProperties = async () => {
@@ -55,7 +58,8 @@ const ListPage = ({ navigation }) => {
           AppStyleHousin.colorSet[colorScheme].mainThemeBackgroundColor
         }
       />
-      <Modal visible={modalOn} transparent={true} animationType={'slide'}>
+      {userClicked&&
+            <Modal visible={modalOn} transparent={true} animationType={'slide'}>
         <View style={styles.modalContainer}
         >
           <View style={styles.modalHeaderContainer} >
@@ -72,8 +76,8 @@ const ListPage = ({ navigation }) => {
             </View>
             {/* Name and Age */}
             <View style={styles.modalInfoContainer}>
-              <Text style={styles.h1Text}>Rua do Juca</Text>
-              <Text style={styles.subTitleDescriptionWite}>Casa de Esquina</Text>
+              <Text style={styles.h1Text}>{userClicked.title}</Text>
+              <Text style={styles.subTitleDescriptionWite}>{userClicked.address}</Text>
             </View>
             <View style={styles.nullModalContainer}>
             <TouchableOpacity onPress={()=>{setModalOn(false)}}>
@@ -84,13 +88,12 @@ const ListPage = ({ navigation }) => {
             </View>
           </View>
           <View style={{right:'10%',bottom:'77%',width:60, height:60, borderRadius:80,  marginTop:AppStyleHousin.WINDOW_HEIGHT * 0.5, borderColor:'#FF572D', borderWidth:3, backgroundColor:'#F1F5F8', alignItems:'center', justifyContent:'center', position:'absolute', elevation:10}}>
-                  <Text style={{color:'#FF572D'}}>87%</Text>
+                  <Text style={{color:'#FF572D'}}>{userClicked.compatibility}%</Text>
                 </View>
           <View style={styles.modalContainerInfos}>
             <ScrollView>
               <View style={styles.modalDescriptionContainer}>
-                <Text style={styles.subTitleSmallRegular}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere fringilla elit, non fermentum Lorem ipsum dolor sit amet, consectetur adipiscing elit. </Text>
+                <Text style={styles.subTitleSmallRegular}>{userClicked.description}</Text>
               </View>
               <View style={{backgroundColor:'#E6E6F2', height:AppStyleHousin.WINDOW_HEIGHT * 0.15, width:'90%', alignSelf:'center', marginTop:AppStyleHousin.WINDOW_HEIGHT * 0.03, borderRadius:10, paddingTop:'3%', paddingHorizontal:'5%'}}>
                 <Text style={styles.h1TextGray}>Limpo e Organizado</Text>
@@ -123,6 +126,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere fri
           </View>
         </View>
       </Modal>
+      }
       <LinearGradient
         style={styles.headerContainer}
         colors={[
@@ -153,7 +157,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere fri
           data={cardList}
           renderItem={({ item }) => (
             <View style={styles.cardContainer}>
-              <TouchableOpacity activeOpacity={0.8} onPress={()=>setModalOn(true)}>
+              <TouchableOpacity activeOpacity={0.8} onPress={()=>{item.compatibility&&setModalOn(true); setUserClicked(item)}}>
               {/* Imagem */}
               <View style={styles.imageContainer}>
                 <ImageBackground
@@ -167,11 +171,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere fri
                   <Text style={styles.subTitle}>{item.title}</Text>
                   <Text style={styles.subTitleDescription}>{item.address}</Text>
                 </View>
-                <View style={styles.porcentContainer}>
+              {item.compatibility !=0&&
+              <View style={styles.porcentContainer}>
                   <View style={styles.porcentInfo}>
                     <Text>{item.compatibility}%</Text>
                   </View>
-                </View>
+                </View>}
               </View>
               <View style={styles.descriptionContainer}>
                 <Text style={styles.descriptionText}>

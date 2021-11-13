@@ -135,11 +135,8 @@ const style = (colorTheme) => {
     },
 
     '@media (min-width: 320) and (max-width:400)':{
-      buttonStyle:{
-        height:'3rem',
-      },
       inputStyle:{
-        height:'3rem',
+        height:'2.5rem',
       },
     }
   });

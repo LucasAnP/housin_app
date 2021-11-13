@@ -122,7 +122,7 @@ const SecondPage = ({navigation}) =>{
                 />
               </View>
               <View style={{position:"absolute", bottom:'2%', width:'100%', alignItems:'center'}}>
-                <ButtonContinue text={'Próximo'} onPress={()=>navigation.navigate('Third Page')} disabled={(title&&address&&description)?false:true} />
+                <ButtonContinue text={'Próximo'} onPress={()=>navigation.navigate('Third Page',{title, address, description})} disabled={(title&&address&&description)?false:true} />
               </View>
           </View>
       </KeyboardAvoidingView>

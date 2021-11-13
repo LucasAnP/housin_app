@@ -40,7 +40,7 @@ const SignIn = ({ navigation }) => {
         email,
         password,
       });
-      await AsyncStorage.setItem('@HousinApp:token', response.data.token);
+      await AsyncStorage.setItem('@HousinApp:userCredentials', JSON.stringify(response.data));
       setLoading(false);
       navigation.replace('TabNavigator', {
         screen: 'Home',

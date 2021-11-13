@@ -1,18 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { ImageBackground, Text, TouchableOpacity, View } from 'react-native';
 
 import { useColorScheme } from 'react-native-appearance';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import LinearGradient from 'react-native-linear-gradient';
 import AppStyleHousin from '../../../../AppStyleHousin';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import style from './style';
+import { useIsFocused } from '@react-navigation/native';
+import api from '../../../services/api';
 
 const UserProfile = ({navigation}) => {
   const colorScheme = useColorScheme();
   const styles = style(colorScheme);
 
+  const [user, setUser] = useState();
+  const isFocused = useIsFocused();
+
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+
   let imageLocal = require('../../../assets/images/ednaldo_bandeira.png');
+
+  async function getUser(){
+    try {
+      const credentials = await AsyncStorage.getItem('@HousinApp:userCredentials');
+      const UserCredentials = JSON.parse(credentials);
+      const response = await api.get(`/users/${UserCredentials.userId}`);
+      setUsername(response.data[0].username);
+      setEmail(response.data[0].email);
+
+    } catch (err) {
+      console.warn(err);
+    }
+  }
+
+
+  useEffect(() => {
+    getUser();
+  }, [isFocused]);
 
   return (
     <>
@@ -61,8 +88,8 @@ const UserProfile = ({navigation}) => {
               alignItems: 'center',
               justifyContent: 'flex-start',
             }}>
-            <Text style={styles.h1Text}>Lucas A.</Text>
-            <Text style={styles.subText}>23 Anos</Text>
+            <Text style={styles.h1Text}>{username}</Text>
+            <Text style={styles.subText}>{email}</Text>
           </View>
         </View>
 
