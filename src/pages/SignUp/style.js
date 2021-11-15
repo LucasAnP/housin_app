@@ -61,8 +61,14 @@ const style = (colorTheme) => {
       backgroundColor:AppStylesHousin.colorSet[colorTheme].secondThemeBackgroundColor,
       borderTopLeftRadius:30,
       borderTopRightRadius:30,
-      alignItems:'center',
-      justifyContent:'flex-end',
+    },
+
+    containerLoginOppened:{
+      width:'100%',
+      height:'110%',
+      backgroundColor:AppStylesHousin.colorSet[colorTheme].secondThemeBackgroundColor,
+      borderTopLeftRadius:30,
+      borderTopRightRadius:30,
     },
 
     containerInputs:{
@@ -134,10 +140,18 @@ const style = (colorTheme) => {
 
     },
 
-    '@media (min-width: 320) and (max-width:400)':{
+    '@media (min-width: 320) and (max-width:392)':{
       inputStyle:{
         height:'2.5rem',
       },
+      containerLoginOppened:{
+        width:'100%',
+        height:'95%',
+        marginBottom:'13rem',
+        backgroundColor:AppStylesHousin.colorSet[colorTheme].secondThemeBackgroundColor,
+        borderTopLeftRadius:30,
+        borderTopRightRadius:30,
+    },
     }
   });
 

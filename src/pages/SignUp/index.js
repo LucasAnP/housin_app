@@ -6,6 +6,8 @@ import {
   Text,
   TouchableOpacity,
   KeyboardAvoidingView,
+  ScrollView,
+  Keyboard
 } from 'react-native';
 import { useColorScheme } from 'react-native-appearance';
 import { Input } from 'react-native-elements';
@@ -27,6 +29,8 @@ const SignUp = ({ navigation }) => {
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [loading, setLoading] = useState(false);
 
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+
   const signUp = async () => {
     try {
       setLoading(true);
@@ -43,6 +47,20 @@ const SignUp = ({ navigation }) => {
   };
 
   useEffect(() => {
+  const showSubscription = Keyboard.addListener("keyboardDidShow", () => {
+    setKeyboardVisible(true);
+  });
+  const hideSubscription = Keyboard.addListener("keyboardDidHide", () => {
+    setKeyboardVisible(false);
+  });
+
+  return () => {
+    showSubscription.remove();
+    hideSubscription.remove();
+  };
+}, []);
+
+  useEffect(() => {
     if (username && email && password && confirmPassword) {
       setButtonDisabled(false);
     }
@@ -52,6 +70,7 @@ const SignUp = ({ navigation }) => {
       navigation.navigate('SignIn');
     }
   }, [loginEffect]);
+
   return (
     <KeyboardAvoidingView
       style={styles.containerSignIn}
@@ -81,67 +100,77 @@ const SignUp = ({ navigation }) => {
           dividir casa
         </Text>
       </View>
-      <View style={styles.containerLogin}>
-        <View style={styles.containerInputs}>
-          <View style={styles.emailContainer}>
-            <Text style={styles.emailText}>Nome</Text>
-            <View style={styles.inputStyle}>
-              <Input
-                onChangeText={setUsername}
-                inputContainerStyle={styles.inputContainerStyle}
-              />
+        <View style={isKeyboardVisible?styles.containerLoginOppened:styles.containerLogin}>
+      <ScrollView
+          contentContainerStyle={{ flex: 1}}
+          scrollEnabled={true}
+        >
+            <View style={styles.containerInputs}>
+              <View style={styles.emailContainer}>
+                <Text style={styles.emailText}>Nome</Text>
+                <View style={styles.inputStyle}>
+                  <Input
+                    onChangeText={setUsername}
+                    inputContainerStyle={styles.inputContainerStyle}
+                  />
+                </View>
+              </View>
+              <View style={styles.emailContainer}>
+                <Text style={styles.emailText}>E-mail</Text>
+                <View style={styles.inputStyle}>
+                  <Input
+                    onChangeText={setEmail}
+                    autoCapitalize='none'
+                    autoCorrect={false}
+                    inputContainerStyle={styles.inputContainerStyle}
+                  />
+                </View>
+              </View>
+              <View style={styles.passwordContainer}>
+                <Text style={styles.emailPassword}>Senha</Text>
+                <View style={styles.inputStyle}>
+                  <Input
+                    onChangeText={setPassword}
+                    inputContainerStyle={styles.inputContainerStyle}
+                    secureTextEntry={true}
+                  />
+                </View>
+              </View>
+              <View style={styles.passwordContainer}>
+                <Text style={styles.emailPassword}>Confirmar Senha</Text>
+                <View style={styles.inputStyle}>
+                  <Input
+                    onChangeText={setConfirmPassword}
+                    inputContainerStyle={styles.inputContainerStyle}
+                    secureTextEntry={true}
+                    errorMessage={
+                      confirmPassword != password &&
+                      confirmPassword != '' &&
+                      'Senhas diferentes, por favor digitar a correta'
+                    }
+                    errorStyle={{ marginTop: '-2%' }}
+                  />
+                </View>
+              </View>
+              <View style={styles.buttonContainer}>
+                <View
+                  style={
+                    !buttonDisabled
+                      ? styles.buttonStyle
+                      : styles.buttonStyleDisabled
+                  }>
+                  <TouchableOpacity
+                    onPress={() => {
+                      signUp();
+                    }}
+                    disabled={buttonDisabled}>
+                    <Text style={styles.textSubtitle}>Registrar</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
             </View>
-          </View>
-          <View style={styles.emailContainer}>
-            <Text style={styles.emailText}>E-mail</Text>
-            <View style={styles.inputStyle}>
-              <Input
-                onChangeText={setEmail}
-                autoCapitalize='none'
-                autoCorrect={false}
-                inputContainerStyle={styles.inputContainerStyle}
-              />
-            </View>
-          </View>
-          <View style={styles.passwordContainer}>
-            <Text style={styles.emailPassword}>Senha</Text>
-            <View style={styles.inputStyle}>
-              <Input
-                onChangeText={setPassword}
-                inputContainerStyle={styles.inputContainerStyle}
-                secureTextEntry={true}
-              />
-            </View>
-          </View>
-          <View style={styles.passwordContainer}>
-            <Text style={styles.emailPassword}>Confirmar Senha</Text>
-            <View style={styles.inputStyle}>
-              <Input
-                onChangeText={setConfirmPassword}
-                inputContainerStyle={styles.inputContainerStyle}
-                secureTextEntry={true}
-                errorMessage={
-                  confirmPassword != password &&
-                  confirmPassword != '' &&
-                  'Senhas diferentes, por favor digitar a correta'
-                }
-                errorStyle={{ marginTop: '-2%' }}
-              />
-            </View>
-          </View>
-          <View style={styles.buttonContainer}>
-            <View style={!buttonDisabled?styles.buttonStyle:styles.buttonStyleDisabled}>
-              <TouchableOpacity
-                onPress={() => {
-                  signUp();
-                }}
-                disabled={buttonDisabled}>
-                <Text style={styles.textSubtitle}>Registrar</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
+         </ScrollView>
         </View>
-      </View>
     </KeyboardAvoidingView>
   );
 };

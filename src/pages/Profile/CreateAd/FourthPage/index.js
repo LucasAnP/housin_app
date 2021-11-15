@@ -54,7 +54,6 @@ const FourthPage = ({navigation, route}) =>{
             animals
           }
         })
-        console.log('Response', response);
         if(response){
           setLoading(false);
           navigation.replace('UserProfile');

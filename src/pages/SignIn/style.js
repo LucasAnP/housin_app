@@ -37,7 +37,6 @@ const style = (colorTheme) => {
       color:AppStylesHousin.colorSet[colorTheme].whiteText,
       fontSize:AppStylesHousin.fontSet.normal,
       textAlign:'justify',
-      paddingBottom:'5%'
     },
 
     textSubtitleGray:{
@@ -71,6 +70,18 @@ const style = (colorTheme) => {
       borderTopLeftRadius:30,
       borderTopRightRadius:30,
       alignItems:'center',
+    },
+
+    containerLoginOppened:{
+      width:'100%',
+      height:'70%',
+      backgroundColor:"white",
+      borderTopLeftRadius:30,
+      borderTopRightRadius:30,
+      alignItems:'center',
+      bottom:'20%',
+      zIndex:2,
+      elevation:10
     },
 
     containerInputs:{
@@ -123,8 +134,7 @@ const style = (colorTheme) => {
       backgroundColor:AppStylesHousin.colorSet[colorTheme].buttonColor,
       borderRadius:10,
       alignItems:'center',
-      justifyContent:'flex-end',
-      paddingTop:'4%'
+      justifyContent:'center',
     },
 
     buttonStyleDisabled:{
@@ -133,8 +143,7 @@ const style = (colorTheme) => {
       backgroundColor:AppStylesHousin.colorSet[colorTheme].inputColor,
       borderRadius:10,
       alignItems:'center',
-      justifyContent:'flex-end',
-      paddingTop:'3%'
+      justifyContent:'center',
     },
 
     inputContainerStyle:{
@@ -148,7 +157,18 @@ const style = (colorTheme) => {
     '@media (min-width: 320) and (max-width:380)':{
       containerInputs:{
         height:'13rem',
-      }
+      },
+          containerLoginOppened:{
+      width:'100%',
+      height:'70%',
+      backgroundColor:"white",
+      borderTopLeftRadius:30,
+      borderTopRightRadius:30,
+      alignItems:'center',
+      bottom:'30%',
+      zIndex:2,
+      elevation:10
+    },
     }
   });
 

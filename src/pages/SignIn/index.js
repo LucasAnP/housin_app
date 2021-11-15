@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 import {
+  Animated,
   StatusBar,
   View,
   Text,
   TouchableOpacity,
   KeyboardAvoidingView,
+  Keyboard
 } from 'react-native';
 import { useColorScheme } from 'react-native-appearance';
 
@@ -27,6 +29,37 @@ const SignIn = ({ navigation }) => {
 
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+
+  useEffect(() => {
+  const showSubscription = Keyboard.addListener("keyboardDidShow", () => {
+    setKeyboardVisible(true);
+  });
+  const hideSubscription = Keyboard.addListener("keyboardDidHide", () => {
+    setKeyboardVisible(false);
+  });
+
+  return () => {
+    showSubscription.remove();
+    hideSubscription.remove();
+  };
+}, []);
+
+  const fadeIn = () => {
+    // Will change fadeAnim value to 1 in 5 seconds
+    Animated.timing(fadeAnim, {
+      useNativeDriver:true,
+      toValue: 1,
+      duration: 500
+    }).start();
+  };
+
+  useEffect(()=> {
+    fadeIn();
+  },[])
+
   useEffect(() => {
     if (email && password) {
       setButtonDisabled(false);
@@ -40,14 +73,16 @@ const SignIn = ({ navigation }) => {
         email,
         password,
       });
-      await AsyncStorage.setItem('@HousinApp:userCredentials', JSON.stringify(response.data));
+      await AsyncStorage.setItem(
+        '@HousinApp:userCredentials',
+        JSON.stringify(response.data)
+      );
       setLoading(false);
       navigation.replace('TabNavigator', {
         screen: 'Home',
       });
     } catch (err) {
       console.warn(err);
-      console.log('err',err);
     }
   };
 
@@ -81,7 +116,19 @@ const SignIn = ({ navigation }) => {
           deixando assim toda a relação de forma mais interativa.
         </Text>
       </View>
-      <View style={styles.containerLogin}>
+      <Animated.View style={isKeyboardVisible?
+        [styles.containerLoginOppened,
+          {transform: [
+              {
+                translateY: fadeAnim.interpolate({
+                  inputRange: [0,1],
+                  outputRange: [600, 0]
+                })
+              }
+            ]}
+        ]
+      :
+      [styles.containerLogin]}>
         <View style={styles.loginTextContainer}>
           <Text style={styles.loginText}>Login</Text>
         </View>
@@ -109,20 +156,18 @@ const SignIn = ({ navigation }) => {
           </View>
         </View>
         <View style={styles.buttonContainer}>
-          <View
+          <TouchableOpacity
+            disabled={buttonDisabled}
+            onPress={() => {
+              login();
+            }}
             style={
               buttonDisabled ? styles.buttonStyleDisabled : styles.buttonStyle
             }>
-            <TouchableOpacity
-              disabled={buttonDisabled}
-              onPress={() => {
-                login();
-              }}>
-              <Text style={styles.textSubtitle}>Entrar</Text>
-            </TouchableOpacity>
-          </View>
+            <Text style={styles.textSubtitle}>Entrar</Text>
+          </TouchableOpacity>
         </View>
-      </View>
+      </Animated.View >
     </KeyboardAvoidingView>
   );
 };
