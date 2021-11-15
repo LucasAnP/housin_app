@@ -7,14 +7,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 ** Simulador IOS:           http://localhost:3333/
 */
 const api = axios.create({
-  baseURL: 'http://10.0.2.2:3333',
+  baseURL: `https://housin-serve-adonis.herokuapp.com`,
 });
 
 api.interceptors.request.use(async (config) => {
   try {
     const credentials = await AsyncStorage.getItem('@HousinApp:userCredentials');
     const UserCredentials = JSON.parse(credentials)
-
     if (UserCredentials.token) {
       config.headers.Authorization = `Bearer ${UserCredentials.token}`;
     }

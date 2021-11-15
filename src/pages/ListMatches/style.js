@@ -100,7 +100,7 @@ const style = (colorTheme) => {
     modalInfoContainer:{width:'40%', height:'100%', justifyContent:'center'},
 
     modalContainerInfos:{width:'100%', height:'80%',justifyContent:'flex-start'},
-    modalDescriptionContainer:{backgroundColor:AppStylesHousin.colorSet[colorTheme].cardBackgroundColor, height:AppStylesHousin.WINDOW_HEIGHT * 0.4, width:'90%', alignSelf:'center',justifyContent:'center', marginTop:AppStylesHousin.WINDOW_HEIGHT * 0.06, borderRadius:10, paddingHorizontal:'5%'}
+    modalDescriptionContainer:{width:'90%', backgroundColor:AppStylesHousin.colorSet[colorTheme].cardBackgroundColor, alignSelf:'center',justifyContent:'center', marginTop:AppStylesHousin.WINDOW_HEIGHT * 0.06, borderRadius:10, padding:'5%'}
 
 
 

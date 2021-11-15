@@ -92,7 +92,7 @@ const MyAds = ({ navigation }) => {
               </Text>
             </View>
             <View style={styles.nullModalContainer}>
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity onPress={() => {setModalOn(false)}}>
                 <View
                   style={{
                     width: AppStyleHousin.WINDOW_HEIGHT * 0.05,
@@ -127,7 +127,6 @@ const MyAds = ({ navigation }) => {
               position: 'absolute',
               elevation: 10,
             }}>
-            <Text style={{ color: '#FF572D' }}>87%</Text>
           </View>
           <View style={styles.modalContainerInfos}>
             <ScrollView>
@@ -273,7 +272,7 @@ const MyAds = ({ navigation }) => {
                 <View style={styles.cardContainer}>
                   <TouchableOpacity
                     activeOpacity={0.8}
-                    onPress={() => setModalOn(true)}>
+                    onPress={() => {}}>
                     {/* Imagem */}
                     <View style={styles.imageContainer}>
                       <ImageBackground
@@ -290,11 +289,6 @@ const MyAds = ({ navigation }) => {
                         <Text style={styles.subTitleDescription}>
                           {item.properties[index].address}
                         </Text>
-                      </View>
-                      <View style={styles.porcentContainer}>
-                        <View style={styles.porcentInfo}>
-                          <Text>{item.properties[index].compatibility}%</Text>
-                        </View>
                       </View>
                     </View>
                     <View style={styles.descriptionContainer}>

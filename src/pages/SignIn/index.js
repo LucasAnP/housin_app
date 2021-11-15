@@ -40,6 +40,16 @@ const SignIn = ({ navigation }) => {
         email,
         password,
       });
+      // const response = await Axios.post(`${URL}/sessions`, {
+      //   email,
+      //   password,
+      // },
+      // {
+      //   headers:{
+      //     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTYzNjgzMTYzMX0.U-OYv44FKkNQ5zkhz57Pt462GY8IdqYXwEkXh9mZ6vs'
+      //   }
+      // }
+      // );
       await AsyncStorage.setItem('@HousinApp:userCredentials', JSON.stringify(response.data));
       setLoading(false);
       navigation.replace('TabNavigator', {
@@ -47,6 +57,7 @@ const SignIn = ({ navigation }) => {
       });
     } catch (err) {
       console.warn(err);
+      console.log('err',err);
     }
   };
 

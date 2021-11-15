@@ -35,6 +35,8 @@ const ListMatches = ({ navigation }) => {
   const isFocused = useIsFocused();
   const [loading, setLoading] = useState(false);
 
+  const [userClicked, setUserClicked] = useState();
+
   async function getMyAds() {
     setLoading(true);
     try {
@@ -113,33 +115,11 @@ const ListMatches = ({ navigation }) => {
               </TouchableOpacity>
             </View>
           </View>
-          <View
-            style={{
-              right: '10%',
-              bottom: '77%',
-              width: 60,
-              height: 60,
-              borderRadius: 80,
-              marginTop: AppStyleHousin.WINDOW_HEIGHT * 0.5,
-              borderColor: '#FF572D',
-              borderWidth: 3,
-              backgroundColor: '#F1F5F8',
-              alignItems: 'center',
-              justifyContent: 'center',
-              position: 'absolute',
-              elevation: 10,
-            }}>
-            <Text style={{ color: '#FF572D' }}>87%</Text>
-          </View>
           <View style={styles.modalContainerInfos}>
             <ScrollView>
               <View style={styles.modalDescriptionContainer}>
                 <Text style={styles.subTitleSmallRegular}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem
-                  ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
-                  dolor sit amet, consectetur adipiscing elit. Suspendisse
-                  posuere fringilla elit, non fermentum Lorem ipsum dolor sit
-                  amet, consectetur adipiscing elit.{' '}
+                  {userClicked.description}
                 </Text>
               </View>
               <View
@@ -274,7 +254,7 @@ const ListMatches = ({ navigation }) => {
               <View style={styles.cardContainer}>
                 <TouchableOpacity
                   activeOpacity={0.8}
-                  onPress={() => setModalOn(true)}>
+                  onPress={() => {setModalOn(true); setUserClicked(item.properties[index])}}>
                   {/* Imagem */}
                   <View style={styles.imageContainer}>
                     <ImageBackground
@@ -292,14 +272,10 @@ const ListMatches = ({ navigation }) => {
                         {item.properties[index].address}
                       </Text>
                     </View>
-                    <View style={styles.porcentContainer}>
-                      <View style={styles.porcentInfo}>
-                        <Text>{item.properties[index].compatibility}%</Text>
-                      </View>
-                    </View>
                   </View>
                   <View style={styles.descriptionContainer}>
                     <Text style={styles.descriptionText}>
+                      {console.log(item)}
                       {item.properties[index].description}
                     </Text>
                   </View>

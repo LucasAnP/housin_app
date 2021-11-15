@@ -46,8 +46,15 @@ const FourthPage = ({navigation, route}) =>{
           title: title,
           address: address,
           description:description,
-          compatibility:0
+          qualities:{
+            organized,
+            smoke,
+            drink,
+            responsable,
+            animals
+          }
         })
+        console.log('Response', response);
         if(response){
           setLoading(false);
           navigation.replace('UserProfile');
