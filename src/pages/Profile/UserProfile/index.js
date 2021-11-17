@@ -21,7 +21,7 @@ const UserProfile = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
 
-  let imageLocal = require('../../../assets/images/ednaldo_bandeira.png');
+  let imageLocal = require('../../../assets/images/user-image.png');
 
   async function getUser(){
     try {
@@ -63,7 +63,7 @@ const UserProfile = ({navigation}) => {
               alignItems: 'flex-end',
               justifyContent: 'center',
             }}>
-            <Text style={styles.exitText}>Sair</Text>
+            {/* <Text style={styles.exitText}>Sair</Text> */}
           </View>
           <View style={styles.imageBackground}>
             <View
@@ -261,7 +261,7 @@ const UserProfile = ({navigation}) => {
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'center',
-              }} activeOpacity={0.8} onPress={()=>navigation.navigate('UserCredentials')}>
+              }} activeOpacity={0.8} onPress={()=>navigation.navigate('UserCredentials',{username, email})}>
               {/* IconContainer */}
               <View
                 style={{

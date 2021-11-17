@@ -7,6 +7,7 @@ import SignUp from './pages/SignUp';
 import InitialPage from './pages/InitialPage';
 import TabNavigator from './pages/tab.navigator'
 import CreateAdNavigation from './pages/Profile/CreateAd/CreateAd.navigation';
+import SignUpQualities from './pages/Profile/SignUpQualities';
 
 const Routes = () => {
 
@@ -18,6 +19,7 @@ const Routes = () => {
       <Stack.Screen options={{headerShown:false}} name='SignUp' component={SignUp} />
       <Stack.Screen options={{headerShown:false}} name='TabNavigator' component={TabNavigator} />
       <Stack.Screen options={{headerShown:false}} name='CreateAd' component={CreateAdNavigation}/>
+      <Stack.Screen options={{headerShown:false}} name='SignUpQualities' component={SignUpQualities}/>
     </Stack.Navigator>
   )
 }

@@ -67,7 +67,7 @@ const SignUp = ({ navigation }) => {
   }, [username, email, password, confirmPassword]);
   useEffect(() => {
     if (loginEffect) {
-      navigation.navigate('SignIn');
+      navigation.replace('SignUpQualities',{userInfo:loginEffect});
     }
   }, [loginEffect]);
 
@@ -153,20 +153,19 @@ const SignUp = ({ navigation }) => {
                 </View>
               </View>
               <View style={styles.buttonContainer}>
-                <View
+                <TouchableOpacity
                   style={
                     !buttonDisabled
                       ? styles.buttonStyle
                       : styles.buttonStyleDisabled
-                  }>
-                  <TouchableOpacity
+
+                  }
                     onPress={() => {
                       signUp();
                     }}
-                    disabled={buttonDisabled}>
+                  >
                     <Text style={styles.textSubtitle}>Registrar</Text>
-                  </TouchableOpacity>
-                </View>
+                </TouchableOpacity>
               </View>
             </View>
          </ScrollView>

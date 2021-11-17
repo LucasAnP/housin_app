@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-import { Animated, ImageBackground, Text, TouchableOpacity, View } from 'react-native';
+import { Animated, ImageBackground, KeyboardAvoidingView, Text, TouchableOpacity, View } from 'react-native';
 
 import { useColorScheme } from 'react-native-appearance';
 import { Input } from 'react-native-elements/dist/input/Input';
@@ -12,12 +12,15 @@ import LinearGradient from 'react-native-linear-gradient';
 import AppStyleHousin from '../../../../AppStyleHousin';
 import style from './style';
 
-const UserCredentials = ({navigation}) => {
+const UserCredentials = ({navigation, route}) => {
   const colorScheme = useColorScheme();
   const styles = style(colorScheme);
 
   const fadeAnim = useRef(new Animated.Value(0)).current;
-  let imageLocal = require('../../../assets/images/ednaldo_bandeira.png');
+  let imageLocal = require('../../../assets/images/user-image.png');
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
 
   const fadeIn = () => {
     // Will change fadeAnim value to 1 in 5 seconds
@@ -29,10 +32,23 @@ const UserCredentials = ({navigation}) => {
   };
 
   useEffect(()=> {
+    if(route.params.username){
+      setName(route.params.username);
+      setEmail(route.params.email);
+    }
+  },[route.params])
+
+  useEffect(()=> {
     fadeIn();
   },[])
 
   return (
+  <KeyboardAvoidingView
+      behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+      keyboardVerticalOffset={Platform.OS == 'ios' ? 0 : 20}
+      enabled={Platform.OS === 'ios' ? true : false}
+      style={styles.containerSignIn}
+      behavior={'height'}>
     <SafeAreaView style={styles.containerFlex}>
       <View style={styles.flex2Container}>
         <View style={styles.buttonContainer}>
@@ -68,8 +84,8 @@ const UserCredentials = ({navigation}) => {
                   />
             </View>
             <View style={styles.nameAndAgeContainer}>
-              <Text style={styles.h1TextGrayName}>Lucas A.</Text>
-              <Text style={[styles.subTextName, styles.ageText]}>21 anos</Text>
+              <Text style={styles.h1TextGrayName}>{name}</Text>
+              <Text style={[styles.subTextName, styles.ageText]}>{email}</Text>
             </View>
           </View>
           <View style={styles.spacingContainer}></View>
@@ -89,23 +105,15 @@ const UserCredentials = ({navigation}) => {
                   <Input inputContainerStyle={styles.inputContainerStyle}/>
                 </View>
               </View>
-              <View style={{height:'25%', width:'100%', alignItems:'center', marginBottom:'2%'}}>
+              <View style={{height:'25%', width:'100%', alignItems:'center'}}>
                 <Text style={[{alignSelf:'flex-start'}, styles.subText]}>E-Mail</Text>
                 <View style={styles.inputStyle}>
-                  <Input inputContainerStyle={styles.inputContainerStyle}/>
+                  <Input inputContainerStyle={styles.inputContainerStyle} onChangeText={setEmail}/>
                 </View>
               </View>
               <View style={{height:'25%', width:'100%', alignItems:'center', marginBottom:'2%'}}>
-                <Text style={[{alignSelf:'flex-start'}, styles.subText]}>Senha</Text>
-                <View style={styles.inputStyle}>
-                  <Input inputContainerStyle={styles.inputContainerStyle}/>
-                </View>
               </View>
               <View style={{height:'25%', width:'100%', alignItems:'center', marginBottom:'2%'}}>
-                <Text style={[{alignSelf:'flex-start'}, styles.subText]}>Confirmar Senha</Text>
-                <View style={styles.inputStyle}>
-                  <Input inputContainerStyle={styles.inputContainerStyle}/>
-                </View>
               </View>
             </View>
             {/* /Inputs Container */}
@@ -134,6 +142,7 @@ const UserCredentials = ({navigation}) => {
           </View>
         </Animated.View>
     </SafeAreaView>
+  </KeyboardAvoidingView>
   );
 };
 export default UserCredentials;

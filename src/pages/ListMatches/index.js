@@ -29,7 +29,7 @@ const ListMatches = ({ navigation }) => {
   const colorScheme = useColorScheme();
   const styles = style(colorScheme);
 
-  let imageLocal = require('../../assets/images/ednaldo_bandeira.png');
+  let imageLocal = require('../../assets/images/house-example.png');
 
   const [cardList, setCardList] = useState();
 
@@ -47,7 +47,7 @@ const ListMatches = ({ navigation }) => {
       const UserCredentials = JSON.parse(credentials);
       const response = await api.get(`/users/${UserCredentials.userId}`);
       setLoading(false);
-      setCardList(response.data);
+      setCardList(response.data[0].matchesProperties);
     } catch (err) {
       console.warn(err);
     }
@@ -112,7 +112,7 @@ const ListMatches = ({ navigation }) => {
                 elevation: 10,
               }}>
               <Text style={{ color: '#FF572D' }}>
-                {userClicked.compatibility}%
+                {/* {userClicked.compatibility}% */}
               </Text>
             </View>
             <View style={styles.modalContainerInfos}>
@@ -386,15 +386,7 @@ const ListMatches = ({ navigation }) => {
           AppStyleHousin.colorSet[colorScheme].mainThemeBackgroundColor,
           AppStyleHousin.colorSet[colorScheme].minLinearThemeBackground,
         ]}>
-        <View style={styles.leftIconContainer}>
-          <Ionicons
-            name={'chevron-back'}
-            size={AppStyleHousin.WINDOW_WIDTH * 0.07}
-            color={
-              AppStyleHousin.colorSet[colorScheme].secondThemeBackgroundColor
-            }
-          />
-        </View>
+        <View style={styles.leftIconContainer}/>
         <View style={styles.titleHeaderContainer}>
           <Text style={styles.h1Text}>Matches</Text>
         </View>
@@ -405,18 +397,19 @@ const ListMatches = ({ navigation }) => {
       <View style={styles.allCardContainer}>
         {/* //FLATLIST */}
 
-        {cardList && (<FlatList
+        {cardList && (
+        <FlatList
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
           data={cardList}
-          renderItem={({ item, index }) =>
-            item.properties[index] && (
+          renderItem={({ item }) =>
+            cardList && (
               <View style={styles.cardContainer}>
                 <TouchableOpacity
                   activeOpacity={0.8}
                   onPress={() => {
                     setModalOn(true);
-                    setUserClicked(item.properties[index])
+                    setUserClicked(item)
                   }}>
                   {/* Imagem */}
                   <View style={styles.imageContainer}>
@@ -429,16 +422,16 @@ const ListMatches = ({ navigation }) => {
                   <View style={styles.infoOfHouse}>
                     <View style={styles.nameAndAge}>
                       <Text style={styles.subTitle}>
-                        {item.properties[index].title}
+                        {item.title}
                       </Text>
                       <Text style={styles.subTitleDescription}>
-                        {item.properties[index].address}
+                        {item.address}
                       </Text>
                     </View>
                   </View>
                   <View style={styles.descriptionContainer}>
                     <Text style={styles.descriptionText}>
-                      {item.properties[index].description}
+                      {item.description}
                     </Text>
                   </View>
                 </TouchableOpacity>

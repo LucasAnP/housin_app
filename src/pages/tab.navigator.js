@@ -54,6 +54,7 @@ export default function App() {
         },
         tabBarActiveTintColor: AppStyleHousin.colorSet[colorScheme].mainThemeBackgroundColor,
         tabBarInactiveTintColor: AppStyleHousin.colorSet[colorScheme].inputColor,
+        tabBarHideOnKeyboard:true
       })}
       >
         <Tab.Screen name="Home" component={HomeScreen} options={{headerShown:false}}  />

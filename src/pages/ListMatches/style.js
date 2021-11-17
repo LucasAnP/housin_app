@@ -212,6 +212,7 @@ const style = (colorTheme) => {
     },
     modalDescriptionContainer: {
       backgroundColor: AppStylesHousin.colorSet[colorTheme].cardBackgroundColor,
+      width:'95%',
       alignSelf: 'center',
       justifyContent: 'center',
       marginTop: AppStylesHousin.WINDOW_HEIGHT * 0.06,

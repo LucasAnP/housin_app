@@ -215,6 +215,7 @@ const style = (colorTheme) => {
       alignSelf: 'center',
       justifyContent: 'center',
       marginTop: AppStylesHousin.WINDOW_HEIGHT * 0.06,
+      width:'95%',
       borderRadius: 10,
       padding: '5%',
     },

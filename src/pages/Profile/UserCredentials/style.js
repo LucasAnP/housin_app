@@ -12,13 +12,19 @@ const styles = (colorTheme) => {
       borderRadius:10,
 
       justifyContent:'center',
+      alignItems:'center',
     },
+
     inputContainerStyle:{
       borderBottomWidth: 0,
-
       width: '100%',
       height: '100%',
 
+    },
+
+    containerSignIn:{
+      flex:1,
+      backgroundColor:AppStylesHousin.colorSet[colorTheme].mainThemeBackgroundColor,
     },
 
 
@@ -52,8 +58,8 @@ const styles = (colorTheme) => {
 
     subTextName:{
       fontFamily:'Poppins-SemiBold',
-      color:AppStylesHousin.colorSet[colorTheme].textDarkGray,
-      fontSize:AppStylesHousin.fontSet.xsmall,
+      color:AppStylesHousin.colorSet[colorTheme].subTextGray,
+      fontSize:AppStylesHousin.fontSet.xxsmall,
     },
 
     saveText:{
