@@ -35,6 +35,12 @@ const styles = (colorTheme) => {
 
     subTextGray: {
       fontFamily: 'Poppins-SemiBold',
+      color: AppStylesHousin.colorSet[colorTheme].subTextGray,
+      fontSize: AppStylesHousin.fontSet.xsmall,
+    },
+
+    subTitleThemeText:{
+      fontFamily: 'Poppins-SemiBold',
       color: AppStylesHousin.colorSet[colorTheme].subText,
       fontSize: AppStylesHousin.fontSet.small,
     },
@@ -44,6 +50,7 @@ const styles = (colorTheme) => {
       height: '100%',
       justifyContent: 'space-around',
       alignItems: 'center',
+      marginBottom:'10%'
     },
 
     imageStyleFullRadius: { width: '105%', height: '105%', overflow: 'hidden' },

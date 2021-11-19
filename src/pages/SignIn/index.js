@@ -15,8 +15,8 @@ import AppStyleHousin from '../../../AppStyleHousin';
 import style from './style';
 import api from '../../services/api';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Spinner from 'react-native-loading-spinner-overlay';
 import { Input } from 'react-native-elements';
+import LoadingComponent from '../../components/LoadingComponent';
 
 const SignIn = ({ navigation }) => {
   const colorScheme = useColorScheme();
@@ -93,12 +93,7 @@ const SignIn = ({ navigation }) => {
       enabled={Platform.OS === 'ios' ? true : false}
       style={styles.containerSignIn}
       behavior={'height'}>
-      <Spinner
-        visible={loading}
-        textContent={'Loading...'}
-        color={AppStyleHousin.colorSet[colorScheme].cardBackgroundColor}
-        textStyle={styles.textSubtitleGray}
-      />
+      <LoadingComponent visible={loading} textTitle={'Carregando'} descriptionLoading={'Aguarde enquanto fazemos sua autenticação'} />
       <StatusBar
         backgroundColor={
           AppStyleHousin.colorSet[colorScheme].mainThemeBackgroundColor

@@ -13,6 +13,7 @@ const style = (colorTheme) => {
       fontFamily: 'Poppins-Bold',
       color: AppStylesHousin.colorSet[colorTheme].subTextGray,
       fontSize: AppStylesHousin.fontSet.normal,
+      paddingLeft:'2%'
     },
     subTitle: {
       fontFamily: 'Poppins-Bold',

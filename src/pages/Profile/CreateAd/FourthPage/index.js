@@ -13,6 +13,7 @@ import Slider from '@react-native-community/slider';
 import style from './style';
 import api from '../../../../services/api';
 import Spinner from 'react-native-loading-spinner-overlay';
+import LoadingComponent from '../../../../components/LoadingComponent';
 
 const FourthPage = ({navigation, route}) =>{
     const colorScheme = useColorScheme();
@@ -30,6 +31,12 @@ const FourthPage = ({navigation, route}) =>{
     const [description, setDescription] = useState('');
 
     const [loading, setLoading] = useState(false);
+
+    const [changedValue1, setChangedValue1] = useState(false);
+    const [changedValue2, setChangedValue2] = useState(false);
+    const [changedValue3, setChangedValue3] = useState(false);
+    const [changedValue4, setChangedValue4] = useState(false);
+    const [changedValue5, setChangedValue5] = useState(false);
 
     useEffect(()=> {
       if(route.params){
@@ -56,7 +63,7 @@ const FourthPage = ({navigation, route}) =>{
         })
         if(response){
           setLoading(false);
-          navigation.replace('UserProfile');
+          navigation.replace('TabNavigator');
         }
       }catch(err){
         console.warn(err);
@@ -64,12 +71,7 @@ const FourthPage = ({navigation, route}) =>{
   };
     return (
       <SafeAreaView style={{flex:1}}>
-              <Spinner
-        visible={loading}
-        textContent={'Loading...'}
-        color={AppStyleHousin.colorSet[colorScheme].cardBackgroundColor}
-        textStyle={styles.textSubtitleGray}
-      />
+        <LoadingComponent visible={loading} textTitle={'Criando...'} descriptionLoading={'Criamos seu anúncio'} />
           <StatusBar translucent={true} backgroundColor={'rgba(0, 0, 0, .2)'} />
           <View
             style={{
@@ -102,7 +104,14 @@ const FourthPage = ({navigation, route}) =>{
                 <ScrollView>
                   <View style={{width:AppStyleHousin.WINDOW_WIDTH*0.9, height:100, backgroundColor:'#E6E6F2', borderRadius:15, margin:'1%', alignItems:'center'}}>
                       <View style={{width:'90%', height:'40%', justifyContent:'space-between', flexDirection:'row', alignItems:'center'}}>
-                        <Text style={styles.h1TextGray,{color:AppStyleHousin.colorSet[colorScheme].themeText}}>Limpo e organizado?</Text>
+                        <Text style={styles.subTitleThemeText}>Limpo e organizado?</Text>
+                        {changedValue1&&(
+                          <MaterialIcons
+                            name={'check-circle-outline'}
+                            color={'#00ff00'}
+                            size={AppStyleHousin.WINDOW_HEIGHT * 0.025}
+                          />
+                        )}
                       </View>
                       <View style={{width:'90%', flexDirection:'row', justifyContent:"space-between"}}>
                         <Text style={styles.subTextGray}>Não</Text>
@@ -118,14 +127,23 @@ const FourthPage = ({navigation, route}) =>{
                           maximumValue={1}
                           animateTransitions={true}
                           animationType={'spring'}
-                          minimumTrackTintColor="#FFFFFF"
-                          maximumTrackTintColor="#000000"
+                          minimumTrackTintColor="grey"
+                          maximumTrackTintColor="grey"
+                          thumbTintColor={AppStyleHousin.colorSet[colorScheme].minLinearThemeBackground}
+                          onValueChange={()=>setChangedValue1(true)}
                         />
                     </View>
 
                     <View style={{width:AppStyleHousin.WINDOW_WIDTH*0.9, height:100, backgroundColor:'#E6E6F2', borderRadius:15, margin:'1%', alignItems:'center'}}>
                       <View style={{width:'90%', height:'40%', justifyContent:'space-between', flexDirection:'row', alignItems:'center'}}>
-                        <Text style={styles.h1TextGray,{color:AppStyleHousin.colorSet[colorScheme].themeText}}>Fumante?</Text>
+                        <Text style={styles.subTitleThemeText}>Fumante?</Text>
+                        {changedValue2&&(
+                          <MaterialIcons
+                            name={'check-circle-outline'}
+                            color={'#00ff00'}
+                            size={AppStyleHousin.WINDOW_HEIGHT * 0.025}
+                          />
+                        )}
                       </View>
                       <View style={{width:'90%', flexDirection:'row', justifyContent:"space-between"}}>
                         <Text style={styles.subTextGray}>Não</Text>
@@ -141,14 +159,23 @@ const FourthPage = ({navigation, route}) =>{
                           maximumValue={1}
                           animateTransitions={true}
                           animationType={'spring'}
-                          minimumTrackTintColor="#FFFFFF"
-                          maximumTrackTintColor="#000000"
+                          minimumTrackTintColor="grey"
+                          maximumTrackTintColor="grey"
+                          thumbTintColor={AppStyleHousin.colorSet[colorScheme].minLinearThemeBackground}
+                          onValueChange={()=>setChangedValue2(true)}
                         />
                     </View>
 
                     <View style={{width:AppStyleHousin.WINDOW_WIDTH*0.9, height:100, backgroundColor:'#E6E6F2', borderRadius:15, margin:'1%', alignItems:'center'}}>
                       <View style={{width:'90%', height:'40%', justifyContent:'space-between', flexDirection:'row', alignItems:'center'}}>
-                        <Text style={styles.h1TextGray,{color:AppStyleHousin.colorSet[colorScheme].themeText}}>Que beba?</Text>
+                        <Text style={styles.subTitleThemeText}>Que beba?</Text>
+                        { changedValue3&&(
+                          <MaterialIcons
+                            name={'check-circle-outline'}
+                            color={'#00ff00'}
+                            size={AppStyleHousin.WINDOW_HEIGHT * 0.025}
+                          />
+                        )}
                       </View>
                       <View style={{width:'90%', flexDirection:'row', justifyContent:"space-between"}}>
                         <Text style={styles.subTextGray}>Não</Text>
@@ -164,14 +191,23 @@ const FourthPage = ({navigation, route}) =>{
                           maximumValue={1}
                           animateTransitions={true}
                           animationType={'spring'}
-                          minimumTrackTintColor="#FFFFFF"
-                          maximumTrackTintColor="#000000"
+                          minimumTrackTintColor="grey"
+                          maximumTrackTintColor="grey"
+                          thumbTintColor={AppStyleHousin.colorSet[colorScheme].minLinearThemeBackground}
+                          onValueChange={()=>setChangedValue3(true)}
                         />
                     </View>
 
                     <View style={{width:AppStyleHousin.WINDOW_WIDTH*0.9, height:100, backgroundColor:'#E6E6F2', borderRadius:15, margin:'1%', alignItems:'center'}}>
                       <View style={{width:'90%', height:'40%', justifyContent:'space-between', flexDirection:'row', alignItems:'center'}}>
-                        <Text style={styles.h1TextGray,{color:AppStyleHousin.colorSet[colorScheme].themeText}}>Responsável com contas?</Text>
+                        <Text style={styles.subTitleThemeText}>Responsável com contas?</Text>
+                        {changedValue4&&(
+                          <MaterialIcons
+                            name={'check-circle-outline'}
+                            color={'#00ff00'}
+                            size={AppStyleHousin.WINDOW_HEIGHT * 0.025}
+                          />
+                        )}
                       </View>
                       <View style={{width:'90%', flexDirection:'row', justifyContent:"space-between"}}>
                         <Text style={styles.subTextGray}>Não</Text>
@@ -187,14 +223,23 @@ const FourthPage = ({navigation, route}) =>{
                           maximumValue={1}
                           animateTransitions={true}
                           animationType={'spring'}
-                          minimumTrackTintColor="#FFFFFF"
-                          maximumTrackTintColor="#000000"
+                          minimumTrackTintColor="grey"
+                          maximumTrackTintColor="grey"
+                          thumbTintColor={AppStyleHousin.colorSet[colorScheme].minLinearThemeBackground}
+                          onValueChange={()=>setChangedValue4(true)}
                         />
                     </View>
 
                     <View style={{width:AppStyleHousin.WINDOW_WIDTH*0.9, height:100, backgroundColor:'#E6E6F2', borderRadius:15, margin:'1%', alignItems:'center'}}>
                       <View style={{width:'90%', height:'40%', justifyContent:'space-between', flexDirection:'row', alignItems:'center'}}>
-                        <Text style={styles.h1TextGray,{color:AppStyleHousin.colorSet[colorScheme].themeText}}>Com animais de estimação?</Text>
+                        <Text style={styles.subTitleThemeText}>Que tenha animais de estimação?</Text>
+                        {changedValue5&&(
+                          <MaterialIcons
+                            name={'check-circle-outline'}
+                            color={'#00ff00'}
+                            size={AppStyleHousin.WINDOW_HEIGHT * 0.025}
+                          />
+                        )}
                       </View>
                       <View style={{width:'90%', flexDirection:'row', justifyContent:"space-between"}}>
                         <Text style={styles.subTextGray}>Não</Text>
@@ -210,8 +255,10 @@ const FourthPage = ({navigation, route}) =>{
                           maximumValue={1}
                           animateTransitions={true}
                           animationType={'spring'}
-                          minimumTrackTintColor="#FFFFFF"
-                          maximumTrackTintColor="#000000"
+                          minimumTrackTintColor="grey"
+                          maximumTrackTintColor="grey"
+                          thumbTintColor={AppStyleHousin.colorSet[colorScheme].minLinearThemeBackground}
+                          onValueChange={()=>setChangedValue5(true)}
                         />
                     </View>
                     <View style={{width:'100%', alignItems:'center', marginBottom:'10%', marginTop:'5%'}}>

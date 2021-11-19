@@ -153,8 +153,8 @@ const ListPage = ({ navigation }) => {
                   <Text style={styles.h1TextGray}>Limpo e Organizado</Text>
                   <View
                     style={{
-                      width: '98%',
-                      height: '50%',
+                      width: '100%',
+                      height: '55%',
                       justifyContent: 'flex-end',
                       alignItems: 'center',
                       alignSelf: 'center',
@@ -164,6 +164,7 @@ const ListPage = ({ navigation }) => {
                         width: '98.5%',
                         flexDirection: 'row',
                         justifyContent: 'space-between',
+                        marginBottom:'1%'
                       }}>
                       <MaterialCommunityIcons
                         name={'emoticon-sad-outline'}
@@ -185,6 +186,7 @@ const ListPage = ({ navigation }) => {
                     </View>
                     <SliderStaticComponent
                       porcent={userClicked.organized == 1 ? 100 : 0}
+
                     />
                   </View>
                 </View>
