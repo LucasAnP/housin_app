@@ -105,6 +105,13 @@ const styles = (colorTheme) => {
     credentialsContainer:{height:'80%', width:'100%', alignItems:'center', justifyContent:"center"},
     titleContainer:{height:'12%', width:'100%', justifyContent:'center'},
 
+    buttonStyle:{
+      width: '70%',
+      height: '60%',
+      marginRight:'2%'
+    },
+
+    buttonStyleGradient:{height:'100%', width:'100%', justifyContent:'space-between', flexDirection:"row", alignItems:'center', paddingHorizontal:'2%', marginRight:'1%', borderRadius:50, marginBottom:'2%'},
 
     '@media (min-width: 320) and (max-width:380)':{
       imageContainer:{

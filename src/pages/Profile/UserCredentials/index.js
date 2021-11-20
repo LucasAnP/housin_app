@@ -30,6 +30,8 @@ const UserCredentials = ({navigation, route}) => {
   const [nameInput, setNameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
 
+  const [disabledButton, setDisabledButton] = useState(true);
+
   const fadeIn = () => {
     // Will change fadeAnim value to 1 in 5 seconds
     Animated.timing(fadeAnim, {
@@ -50,13 +52,18 @@ const UserCredentials = ({navigation, route}) => {
     fadeIn();
   },[]);
 
+  useEffect(()=> {
+    if(nameInput && emailInput){
+      setDisabledButton(false);
+    }
+  },[nameInput, emailInput])
+
   const changingCredentials = async () => {
     try {
       const credentials = await AsyncStorage.getItem(
         '@HousinApp:userCredentials'
       );
       const UserCredentialsData = JSON.parse(credentials);
-      console.log('UserCredentials', UserCredentialsData);
       setLoading(true);
       const response = await api.put(`/users/${UserCredentialsData.userid}`, {
         username:nameInput,
@@ -65,6 +72,8 @@ const UserCredentials = ({navigation, route}) => {
       if(response){
         setLoading(false);
         navigation.replace('UserProfile');
+      }else{
+        alert('Preencha os dados novamente')
       }
     } catch (err) {
       console.warn(err);
@@ -150,16 +159,33 @@ const UserCredentials = ({navigation, route}) => {
 
             <View style={{height:'15%', width:'100%', justifyContent:"center", alignItems:'flex-end'}}>
             <TouchableOpacity
-                    style={{
-                      width: '70%',
-                      height: '60%',
-                      marginRight:'2%'
-                    }} onPress={()=> {
+                    style={styles.buttonStyle} onPress={()=> {
                       changingCredentials()
-                    }}>
+                    }} disabled={disabledButton} >
+                      {disabledButton?
               <LinearGradient
               start={{x: 0.0, y: 1}} end={{x: 1, y: 1}}
-          style={{height:'100%', width:'100%', justifyContent:'space-between', flexDirection:"row", alignItems:'center', paddingHorizontal:'2%', marginRight:'1%', borderRadius:50, marginBottom:'2%'}}
+          style={styles.buttonStyleGradient}
+          colors={[
+            AppStyleHousin.colorSet[colorScheme].subTextGray,
+            AppStyleHousin.colorSet[colorScheme].subTextGray,
+          ]}>
+                  <Text style={[styles.saveText, {paddingLeft:'5%'}]}>Salvar</Text>
+                  <View style={{width:AppStyleHousin.WINDOW_WIDTH * 0.08, height:AppStyleHousin.WINDOW_WIDTH * 0.08, backgroundColor:'white', borderRadius:30, alignItems:'center', justifyContent:'center'}}>
+                    <MaterialCommunityIcons
+                        name={'content-save-outline'}
+                        color={
+                          AppStyleHousin.colorSet[colorScheme]
+                            .subTextGray
+                        }
+                        size={AppStyleHousin.WINDOW_HEIGHT * 0.03}
+                      />
+                  </View>
+                </LinearGradient>
+                      :
+              <LinearGradient
+              start={{x: 0.0, y: 1}} end={{x: 1, y: 1}}
+          style={styles.buttonStyleGradient}
           colors={[
             AppStyleHousin.colorSet[colorScheme].mainThemeBackgroundColor,
             AppStyleHousin.colorSet[colorScheme].minLinearThemeBackground,
@@ -176,6 +202,7 @@ const UserCredentials = ({navigation, route}) => {
                       />
                   </View>
                 </LinearGradient>
+                      }
             </TouchableOpacity>
 
             </View>

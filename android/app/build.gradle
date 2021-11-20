@@ -133,7 +133,7 @@ android {
         versionCode 1
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
-        targetSdkVersion 27
+        targetSdkVersion 29
     }
     splits {
         abi {

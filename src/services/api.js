@@ -13,8 +13,8 @@ const api = axios.create({
 api.interceptors.request.use(async (config) => {
   try {
     const credentials = await AsyncStorage.getItem('@HousinApp:userCredentials');
-    const UserCredentials = JSON.parse(credentials)
-    if (UserCredentials.token) {
+    if (credentials) {
+      const UserCredentials = JSON.parse(credentials)
       config.headers.Authorization = `Bearer ${UserCredentials.token}`;
     }
 

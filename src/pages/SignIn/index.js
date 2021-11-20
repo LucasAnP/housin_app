@@ -17,6 +17,7 @@ import api from '../../services/api';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Input } from 'react-native-elements';
 import LoadingComponent from '../../components/LoadingComponent';
+import axios from 'axios';
 
 const SignIn = ({ navigation }) => {
   const colorScheme = useColorScheme();
@@ -78,9 +79,13 @@ const SignIn = ({ navigation }) => {
         JSON.stringify(response.data)
       );
       setLoading(false);
-      navigation.replace('TabNavigator', {
-        screen: 'Home',
-      });
+      if(response.data){
+        navigation.replace('TabNavigator', {
+          screen: 'Home',
+        });
+      }else{
+        alert('Credenciais inválidas, digite novamente...')
+      }
     } catch (err) {
       console.warn(err);
     }

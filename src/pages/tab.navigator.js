@@ -33,12 +33,12 @@ export default function App() {
           let iconName;
           let iconGroup;
 
-          if (route.name === 'Home') {
+          if (route.name === 'Anúncios') {
             iconName = 'home'
             iconGroup='MaterialCommunityIcons'
           } else if (route.name === 'Perfil') {
             iconName = 'person-circle-outline';
-          }else if(route.name =='My Ads'){
+          }else if(route.name =='Meus Anúncios'){
             iconName='folder-home'
             iconGroup='MaterialCommunityIcons'
           }else if(route.name == 'Meus Matches'){
@@ -57,8 +57,8 @@ export default function App() {
         tabBarHideOnKeyboard:true
       })}
       >
-        <Tab.Screen name="Home" component={HomeScreen} options={{headerShown:false}}  />
-        <Tab.Screen name="My Ads" component={MyAds} options={{headerShown:false}}/>
+        <Tab.Screen name="Anúncios" component={HomeScreen} options={{headerShown:false}}  />
+        <Tab.Screen name="Meus Anúncios" component={MyAds} options={{headerShown:false}}/>
         <Tab.Screen name="Meus Matches" component={HomeMatch} options={{headerShown:false}}/>
         <Tab.Screen name="Perfil" component={UserProfileRoutes} options={{headerShown:false}}/>
       </Tab.Navigator>

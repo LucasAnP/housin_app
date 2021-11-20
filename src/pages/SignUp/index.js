@@ -39,8 +39,12 @@ const SignUp = ({ navigation }) => {
         email,
         password,
       });
-      setLoading(false);
-      setLoginEffect(response);
+      if(response.data){
+        setLoading(false);
+        setLoginEffect(response);
+      }else{
+        alert('Já existe alguém com esses dados, por favor, digitar novamente')
+      }
     } catch (err) {
       console.warn(err);
     }
