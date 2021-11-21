@@ -4,7 +4,7 @@ import { View,
   Text,
   TouchableOpacity,
   ImageBackground,
-  StatusBar, SafeAreaView, ScrollView} from 'react-native';
+  StatusBar, SafeAreaView, ScrollView, BackHandler} from 'react-native';
   import { useColorScheme } from 'react-native-appearance';
 import AppStyleHousin from '../../../../AppStyleHousin';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -43,10 +43,14 @@ const SignUpQualities = ({navigation, route}) =>{
     },[route.params])
 
     useEffect(()=> {
-      if(changedValue1 && changedValue2 &&changedValue3&&changedValue4&&changedValue5 ){
+    if(changedValue1 && changedValue2 &&changedValue3&&changedValue4&&changedValue5 ){
         setButtonEnabled(true);
       }
     },[changedValue1, changedValue2, changedValue3, changedValue4, changedValue5]);
+
+    useEffect(() => {
+      BackHandler.addEventListener('hardwareBackPress', () => true);
+    }, []);
 
     const insertUserQualities = async () => {
       try{
@@ -122,7 +126,10 @@ const SignUpQualities = ({navigation, route}) =>{
                       </View>
                       <Slider
                           style={{width: '95%', height: 40}}
-                          onValueChange={setOrganized}
+                          onValueChange={(value) => {
+                            setOrganized(value);
+                            setChangedValue1(true)
+                          }}
                           minimumValue={0}
                           value={0.5}
                           step={0.5}
@@ -132,7 +139,6 @@ const SignUpQualities = ({navigation, route}) =>{
                           minimumTrackTintColor="grey"
                           maximumTrackTintColor="grey"
                           thumbTintColor={AppStyleHousin.colorSet[colorScheme].minLinearThemeBackground}
-                          onValueChange={()=>setChangedValue1(true)}
                         />
                     </View>
 
@@ -154,7 +160,10 @@ const SignUpQualities = ({navigation, route}) =>{
                       </View>
                       <Slider
                           style={{width: '95%', height: 40}}
-                          onValueChange={setSmoke}
+                          onValueChange={(value) => {
+                            setSmoke(value);
+                            setChangedValue2(true)
+                          }}
                           minimumValue={0}
                           value={0.5}
                           step={0.5}
@@ -164,7 +173,6 @@ const SignUpQualities = ({navigation, route}) =>{
                           minimumTrackTintColor="grey"
                           maximumTrackTintColor="grey"
                           thumbTintColor={AppStyleHousin.colorSet[colorScheme].minLinearThemeBackground}
-                          onValueChange={()=>setChangedValue2(true)}
                         />
                     </View>
 
@@ -186,7 +194,10 @@ const SignUpQualities = ({navigation, route}) =>{
                       </View>
                       <Slider
                           style={{width: '95%', height: 40}}
-                          onValueChange={setDrink}
+                          onValueChange={(value) => {
+                            setDrink(value);
+                            setChangedValue3(true)
+                          }}
                           minimumValue={0}
                           value={0.5}
                           step={0.5}
@@ -196,7 +207,6 @@ const SignUpQualities = ({navigation, route}) =>{
                           minimumTrackTintColor="grey"
                           maximumTrackTintColor="grey"
                           thumbTintColor={AppStyleHousin.colorSet[colorScheme].minLinearThemeBackground}
-                          onValueChange={()=>setChangedValue3(true)}
                         />
                     </View>
 
@@ -218,7 +228,10 @@ const SignUpQualities = ({navigation, route}) =>{
                       </View>
                       <Slider
                           style={{width: '95%', height: 40}}
-                          onValueChange={setResponsable}
+                          onValueChange={(value) => {
+                            setResponsable(value);
+                            setChangedValue4(true)
+                          }}
                           minimumValue={0}
                           value={0.5}
                           step={0.5}
@@ -228,7 +241,6 @@ const SignUpQualities = ({navigation, route}) =>{
                           minimumTrackTintColor="grey"
                           maximumTrackTintColor="grey"
                           thumbTintColor={AppStyleHousin.colorSet[colorScheme].minLinearThemeBackground}
-                          onValueChange={()=>setChangedValue4(true)}
                         />
                     </View>
 
@@ -250,7 +262,10 @@ const SignUpQualities = ({navigation, route}) =>{
                       </View>
                       <Slider
                           style={{width: '95%', height: 40}}
-                          onValueChange={setAnimals}
+                          onValueChange={(value) => {
+                            setAnimals(value);
+                            setChangedValue5(true)
+                          }}
                           minimumValue={0}
                           value={0.5}
                           step={0.5}
@@ -260,29 +275,15 @@ const SignUpQualities = ({navigation, route}) =>{
                           minimumTrackTintColor="grey"
                           maximumTrackTintColor="grey"
                           thumbTintColor={AppStyleHousin.colorSet[colorScheme].minLinearThemeBackground}
-                          onValueChange={()=>setChangedValue5(true)}
                         />
                     </View>
 
-                    <View style={{width:'100%', alignItems:'center', marginBottom:'15 %', marginTop:'5%'}}>
-                      <ButtonContinue text={'Próximo'} onPress={()=>insertUserQualities()} disabled={!buttonEnabled}/>
+                    <View style={{width:'100%', alignItems:'center', marginBottom:'20%', marginTop:'5%'}}>
+                      <ButtonContinue text={'Próximo'} onPress={()=>insertUserQualities()}/>
                     </View>
                 </ScrollView>
               </View>
           </View>
-          {/* /WhiteView 67% */}
-          {/* <TouchableOpacity style={styles.goBackAbsoluteContainer} onPress={()=>navigation.goBack()}>
-            <View style={styles.iconContainer}>
-            <MaterialIcons
-                          name={'arrow-back-ios'}
-                          color={
-                            AppStyleHousin.colorSet[colorScheme]
-                              .textDarkGray
-                          }
-                          size={AppStyleHousin.WINDOW_HEIGHT * 0.02}
-                        />
-            </View>
-          </TouchableOpacity> */}
       </SafeAreaView>
     );
 }

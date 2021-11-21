@@ -395,14 +395,14 @@ const ListPage = ({ navigation }) => {
                   style={{
                     width: '100%',
                     height: '10%',
-                    marginBottom: '15%',
+                    marginBottom: '20%',
                     justifyContent: 'flex-end',
                     alignItems: 'flex-end',
                   }}>
                   <TouchableOpacity
                     style={{
                       width: '70%',
-                      height: '60%',
+                      height: '50%',
                       marginRight:'2%'
                     }} onPress={()=> {
                       matchOnProperty()
@@ -449,7 +449,7 @@ const ListPage = ({ navigation }) => {
               alignItems: 'center',
               justifyContent: 'center',
               position: 'absolute',
-              top: 0,
+              top: '2%',
               right: '5%',
               padding: '1%',
             }}>

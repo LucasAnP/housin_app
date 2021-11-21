@@ -160,6 +160,7 @@ const style = (colorTheme) => {
       justifyContent: 'flex-start',
       paddingTop: '5%',
       paddingHorizontal: '2%',
+      paddingBottom:"5%"
     },
 
     //Modal

@@ -120,7 +120,10 @@ const FourthPage = ({navigation, route}) =>{
                       </View>
                       <Slider
                           style={{width: '95%', height: 40}}
-                          onValueChange={setOrganized}
+                          onValueChange={(value) => {
+                            setOrganized(value);
+                            setChangedValue1(true)
+                          }}
                           minimumValue={0}
                           value={0.5}
                           step={0.5}
@@ -130,7 +133,6 @@ const FourthPage = ({navigation, route}) =>{
                           minimumTrackTintColor="grey"
                           maximumTrackTintColor="grey"
                           thumbTintColor={AppStyleHousin.colorSet[colorScheme].minLinearThemeBackground}
-                          onValueChange={()=>setChangedValue1(true)}
                         />
                     </View>
 
@@ -152,7 +154,10 @@ const FourthPage = ({navigation, route}) =>{
                       </View>
                       <Slider
                           style={{width: '95%', height: 40}}
-                          onValueChange={setSmoke}
+                          onValueChange={(value) => {
+                            setSmoke(value);
+                            setChangedValue2(true)
+                          }}
                           minimumValue={0}
                           value={0.5}
                           step={0.5}
@@ -162,7 +167,6 @@ const FourthPage = ({navigation, route}) =>{
                           minimumTrackTintColor="grey"
                           maximumTrackTintColor="grey"
                           thumbTintColor={AppStyleHousin.colorSet[colorScheme].minLinearThemeBackground}
-                          onValueChange={()=>setChangedValue2(true)}
                         />
                     </View>
 
@@ -184,7 +188,10 @@ const FourthPage = ({navigation, route}) =>{
                       </View>
                       <Slider
                           style={{width: '95%', height: 40}}
-                          onValueChange={setDrink}
+                          onValueChange={(value) => {
+                            setDrink(value);
+                            setChangedValue3(true)
+                          }}
                           minimumValue={0}
                           value={0.5}
                           step={0.5}
@@ -194,7 +201,6 @@ const FourthPage = ({navigation, route}) =>{
                           minimumTrackTintColor="grey"
                           maximumTrackTintColor="grey"
                           thumbTintColor={AppStyleHousin.colorSet[colorScheme].minLinearThemeBackground}
-                          onValueChange={()=>setChangedValue3(true)}
                         />
                     </View>
 
@@ -216,7 +222,10 @@ const FourthPage = ({navigation, route}) =>{
                       </View>
                       <Slider
                           style={{width: '95%', height: 40}}
-                          onValueChange={setResponsable}
+                          onValueChange={(value) => {
+                            setResponsable(value);
+                            setChangedValue4(true)
+                          }}
                           minimumValue={0}
                           value={0.5}
                           step={0.5}
@@ -226,7 +235,6 @@ const FourthPage = ({navigation, route}) =>{
                           minimumTrackTintColor="grey"
                           maximumTrackTintColor="grey"
                           thumbTintColor={AppStyleHousin.colorSet[colorScheme].minLinearThemeBackground}
-                          onValueChange={()=>setChangedValue4(true)}
                         />
                     </View>
 
@@ -248,7 +256,10 @@ const FourthPage = ({navigation, route}) =>{
                       </View>
                       <Slider
                           style={{width: '95%', height: 40}}
-                          onValueChange={setAnimals}
+                          onValueChange={(value) => {
+                            setAnimals(value);
+                            setChangedValue5(true)
+                          }}
                           minimumValue={0}
                           value={0.5}
                           step={0.5}
@@ -258,7 +269,6 @@ const FourthPage = ({navigation, route}) =>{
                           minimumTrackTintColor="grey"
                           maximumTrackTintColor="grey"
                           thumbTintColor={AppStyleHousin.colorSet[colorScheme].minLinearThemeBackground}
-                          onValueChange={()=>setChangedValue5(true)}
                         />
                     </View>
                     <View style={{width:'100%', alignItems:'center', marginBottom:'10%', marginTop:'5%'}}>
