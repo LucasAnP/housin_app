@@ -220,6 +220,7 @@ const style = (colorTheme) => {
       width:'95%',
       borderRadius: 10,
       padding: '5%',
+      paddingBottom:'0.1%'
     },
   });
 };

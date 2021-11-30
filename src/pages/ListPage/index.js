@@ -185,7 +185,7 @@ const ListPage = ({ navigation }) => {
                       />
                     </View>
                     <SliderStaticComponent
-                      porcent={userClicked.organized == 1 ? 100 : 0}
+                      porcent={userClicked.organized == 1 || userClicked.organized == 0.5 ? 100 : 0}
 
                     />
                   </View>
@@ -235,8 +235,9 @@ const ListPage = ({ navigation }) => {
                         size={AppStyleHousin.WINDOW_HEIGHT * 0.035}
                       />
                     </View>
+                    {console.log('Smoke', userClicked.smoke)}
                     <SliderStaticComponent
-                      porcent={userClicked.smoke == 1 ? 100 : 0}
+                      porcent={userClicked.smoke == 1 || userClicked.smoke == 0.5 ? 100 : 0}
                     />
                   </View>
                 </View>
@@ -286,7 +287,7 @@ const ListPage = ({ navigation }) => {
                       />
                     </View>
                     <SliderStaticComponent
-                      porcent={userClicked.drink == 1 ? 100 : 0}
+                      porcent={userClicked.drink == 1 || userClicked.drink == 0.5 ? 100 : 0}
                     />
                   </View>
                 </View>
@@ -336,7 +337,7 @@ const ListPage = ({ navigation }) => {
                       />
                     </View>
                     <SliderStaticComponent
-                      porcent={userClicked.responsable == 1 ? 100 : 0}
+                      porcent={userClicked.responsable == 1 || userClicked.responsable == 0.5? 100 : 0}
                     />
                   </View>
                 </View>
@@ -386,7 +387,7 @@ const ListPage = ({ navigation }) => {
                       />
                     </View>
                     <SliderStaticComponent
-                      porcent={userClicked.animals == 1 ? 100 : 0}
+                      porcent={userClicked.animals == 1 || userClicked.animals == 0.5? 100 : 0}
                     />
                   </View>
                 </View>
