@@ -235,7 +235,6 @@ const ListPage = ({ navigation }) => {
                         size={AppStyleHousin.WINDOW_HEIGHT * 0.035}
                       />
                     </View>
-                    {console.log('Smoke', userClicked.smoke)}
                     <SliderStaticComponent
                       porcent={userClicked.smoke == 1 || userClicked.smoke == 0.5 ? 100 : 0}
                     />
@@ -508,7 +507,7 @@ const ListPage = ({ navigation }) => {
                   {item.compatibility != 0 && (
                     <View style={styles.porcentContainer}>
                       <View style={styles.porcentInfo}>
-                        <Text>{item.compatibility}%</Text>
+                        <Text style={styles.descriptionText}>{item.compatibility}%</Text>
                       </View>
                     </View>
                   )}

@@ -101,6 +101,7 @@ const SecondPage = ({navigation}) =>{
                     style={styles.inputStyle}
                     onChangeText={onChangeText}
                     placeholder={'Digite um título para para sua moradia'}
+                    placeholderTextColor={AppStyleHousin.colorSet[colorScheme].subText}
                     value={title}
                     maxLength={50}
                 />
@@ -108,6 +109,7 @@ const SecondPage = ({navigation}) =>{
                     style={styles.inputStyleAddress}
                     onChangeText={onChangeAddress}
                     placeholder={'Digite seu endereço completo (Rua, número, cidade, estado)'}
+                    placeholderTextColor={AppStyleHousin.colorSet[colorScheme].subText}
                     value={address}
                     multiline={true}
                     maxLength={100}
@@ -116,6 +118,7 @@ const SecondPage = ({navigation}) =>{
                     style={styles.inputStyleDescription}
                     onChangeText={onChangeDescription}
                     placeholder={'Escreva uma breve descrição da sua moradia'}
+                    placeholderTextColor={AppStyleHousin.colorSet[colorScheme].subText}
                     value={description}
                     multiline={true}
                     maxLength={250}
