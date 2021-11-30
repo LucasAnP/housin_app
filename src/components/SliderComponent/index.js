@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { View, Text, Touchable, TouchableOpacity} from 'react-native';
+import { View, Text} from 'react-native';
 import { useColorScheme } from 'react-native-appearance';
 import Icon from 'react-native-vector-icons/Ionicons';
 import style from './style';
@@ -16,17 +16,17 @@ const SliderComponent = ({
     {
       key: 'one',
       title: 'Seja bem vindo',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere fringilla elit, non fermentum nisi semper non. Fusce sem ex, fermentum vitae ultricies vel',
+      text: 'O housin é um aplicativo seguro e tem como objetivo facilitar a relação entre locador e locatário, evitando custo adicionais com corretores e intermediadores.',
     },
     {
       key: 'two',
       title: 'Ache a residência ideal',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere fringilla elit, non fermentum nisi semper non. Fusce sem ex, fermentum vitae ultricies vel',
+      text: 'Dentro do aplicativo você consegue visualizar as moradias de acordo com os seus gostos, listando assim uma taxa de compatibilidade onde poderá se basear nas escolhas.',
     },
     {
       key: 'three',
       title: 'Com a pessoa ideal',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere fringilla elit, non fermentum nisi semper non. Fusce sem ex, fermentum vitae ultricies vel',
+      text: 'Quando estiver procurando a pessoa ideal para morar com você, poderá definir a características que deseja para assim evitar problemas futuros com a pessoa escolhida',
     }
   ];
 
